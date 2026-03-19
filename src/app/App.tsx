@@ -8,6 +8,7 @@ import { Navigation } from './components/Navigation';
 import { ProjectDetail } from './components/ProjectDetail';
 import { PageTransition } from './components/PageTransition';
 import { BinaryRain } from './components/BinaryRain';
+import { BinaryExplosion } from './components/BinaryExplosion';
 import { TerminalIntro } from './components/TerminalIntro';
 
 // --- IMPORTS (All images must be imported here to work on GitHub Pages) ---
@@ -188,6 +189,9 @@ export default function App() {
             <div className="fixed inset-0 z-0">
               <BinaryRain />
             </div>
+
+            {/* Click Explosion Effect */}
+            <BinaryExplosion />
 
             {/* Scroll Progress Bar */}
             <motion.div

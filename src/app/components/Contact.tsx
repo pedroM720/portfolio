@@ -1,6 +1,22 @@
-import { useState, memo } from 'react';
+import { useState, memo, FormEvent } from 'react';
 import { Github, Linkedin } from 'lucide-react';
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import emailjs from '@emailjs/browser';
+
+// ============================================================
+// EmailJS Configuration — Replace these with your real IDs!
+// 1. Sign up at https://www.emailjs.com (free: 200 emails/month)
+// 2. Add a Gmail/Outlook service → copy the Service ID
+// 3. Create an email template with variables:
+//    {{from_email}}, {{message}}, {{to_email}}
+// 4. Copy your Public Key from Account > API Keys
+// ============================================================
+const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+const RECIPIENT_EMAIL = 'banditstoes@gmail.com';
+
+type FormStatus = 'idle' | 'sending' | 'success' | 'error';
 
 export const Contact = memo(() => {
   const containerVariants: any = {
@@ -15,6 +31,9 @@ export const Contact = memo(() => {
   };
 
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<FormStatus>('idle');
 
   const getGlowStyle = (btnId: string) => ({
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
@@ -34,6 +53,49 @@ export const Contact = memo(() => {
       y: 0,
       transition: { duration: 0.5, ease: [0.23, 1, 0.32, 1] }
     }
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    // Basic validation
+    if (!email.trim() || !message.trim()) {
+      setStatus('error');
+      return;
+    }
+
+    setStatus('sending');
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_email: email,
+          message: message,
+          to_email: RECIPIENT_EMAIL,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      setStatus('success');
+      setEmail('');
+      setMessage('');
+
+      // Reset success message after 5 seconds
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
+  };
+
+  const statusConfig = {
+    idle: { text: '', color: '' },
+    sending: { text: 'Sending...', color: 'text-blue-400' },
+    success: { text: 'Message sent! 🎉', color: 'text-green-400' },
+    error: { text: 'Something went wrong. Please try again.', color: 'text-red-400' },
   };
 
   return (
@@ -113,38 +175,64 @@ export const Contact = memo(() => {
           </div>
 
           {/* Right Section - Contact Form */}
-          <div className="flex flex-col gap-[42px]">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-[42px]">
             <motion.div className="relative" variants={itemVariants}>
               <input
+                id="contact-email"
                 type="email"
                 placeholder="Email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-transparent border-b-2 border-white/50 py-4 font-['Exo_2',sans-serif] text-[32px] text-white placeholder-[#a4a4a4] outline-none focus:border-blue-400 focus:border-white transition-all"
               />
             </motion.div>
 
             <motion.div className="relative" variants={itemVariants}>
               <textarea
+                id="contact-message"
                 placeholder="Message"
+                required
                 rows={6}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 className="w-full bg-transparent border-b-2 border-white/50 py-4 font-['Exo_2',sans-serif] text-[32px] text-white placeholder-[#a4a4a4] outline-none focus:border-blue-400 focus:border-white transition-all resize-none"
               />
             </motion.div>
 
+            {/* Status Message */}
+            <AnimatePresence>
+              {status !== 'idle' && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className={`font-['Exo_2',sans-serif] text-[20px] ${statusConfig[status].color}`}
+                >
+                  {statusConfig[status].text}
+                </motion.p>
+              )}
+            </AnimatePresence>
+
             <motion.button 
-              className="relative self-start border border-white rounded-[15px] px-12 py-4 font-['Exo_2',sans-serif] text-[40px] text-white hover:bg-white/10 transition-colors group overflow-hidden"
+              type="submit"
+              disabled={status === 'sending'}
+              className="relative self-start border border-white rounded-[15px] px-12 py-4 font-['Exo_2',sans-serif] text-[40px] text-white hover:bg-white/10 transition-colors group overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
               variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={status !== 'sending' ? { scale: 1.05 } : {}}
+              whileTap={status !== 'sending' ? { scale: 0.95 } : {}}
               onMouseEnter={() => setHoveredButton('send')}
               onMouseLeave={() => setHoveredButton(null)}
             >
-              <span className="relative z-10">Send</span>
+              <span className="relative z-10">
+                {status === 'sending' ? 'Sending...' : 'Send'}
+              </span>
               <span 
                 className="absolute inset-0 pointer-events-none"
                 style={getGlowStyle('send')}
               />
             </motion.button>
-          </div>
+          </form>
         </div>
       </motion.div>
     </div>
