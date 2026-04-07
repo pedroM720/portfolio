@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronLeft, ChevronRight, Calendar, Timer, School } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { ProjectPage } from '../App';
 import svgPaths from "../../imports/svg-vh8gv959zq";
 // Change this to your new image path
@@ -53,9 +53,13 @@ interface ProjectCardProps {
   project: Project;
   position: 'left' | 'center' | 'right' | 'hidden';
   onProjectClick: (projectKey: ProjectPage) => void;
+  onPrev: () => void;
+  onNext: () => void;
 }
 
-function ProjectCard({ project, position, onProjectClick }: ProjectCardProps) {
+function ProjectCard({ project, position, onProjectClick, onPrev, onNext }: ProjectCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
   const getTransformStyle = () => {
     switch (position) {
       case 'left':
@@ -123,20 +127,42 @@ function ProjectCard({ project, position, onProjectClick }: ProjectCardProps) {
 
   return (
     <button
-      onClick={() => position === 'center' && onProjectClick(project.projectKey)}
-      className="absolute top-[50px] transition-all duration-700 ease-out cursor-pointer"
+      onClick={() => {
+        if (position === 'center') onProjectClick(project.projectKey);
+        if (position === 'left') onPrev();
+        if (position === 'right') onNext();
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="absolute top-[50px] transition-all duration-700 ease-out cursor-pointer outline-none border-none bg-transparent p-0"
       style={getTransformStyle()}
-      disabled={position !== 'center'}
     >
+      {/* Luminous Glow for lateral cards */}
+      {position !== 'center' && (
+        <motion.div
+          className="absolute inset-0 rounded-[15px] pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isHovered ? 1 : 0 }}
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.4)',
+            filter: 'blur(34px)',
+            transform: 'scale(1.1)',
+            zIndex: -1
+          }}
+        />
+      )}
+
       <div
-        className={`w-[393px] h-[575px] rounded-[15px] p-6 flex flex-col items-center gap-6 shadow-[inset_0px_4px_4px_0px_rgba(103,202,255,0.5)] ${
-          position === 'center' ? 'hover:scale-105' : ''
-        } transition-transform`}
+        className={`w-[393px] h-[575px] rounded-[15px] p-6 flex flex-col items-center gap-6 shadow-[inset_0px_4px_4px_0px_rgba(103,202,255,0.5)] transition-all ${
+          position === 'center' ? 'hover:scale-105' : 'hover:scale-[0.98]'
+        } ${
+          isHovered && position !== 'center' ? 'border-2 border-white/50' : 'border border-transparent'
+        }`}
         style={{ backgroundImage: project.gradient }}
       >
         <div className="flex items-center gap-4 mt-2">
           {renderIcon()}
-          <h2 className="font-['Orbitron',sans-serif] text-[36px] text-white leading-[1.2] whitespace-pre-line">
+          <h2 className="font-['Orbitron',sans-serif] text-[36px] text-white leading-[1.2] whitespace-pre-line text-left">
             {project.name}
           </h2>
         </div>
@@ -149,42 +175,29 @@ function ProjectCard({ project, position, onProjectClick }: ProjectCardProps) {
   );
 }
 
-function WIPCard({ position, index }: { position: 'far-left' | 'far-right'; index: number }) {
-  const getTransformStyle = () => {
-    if (position === 'far-left') {
-      return {
-        transform: `perspective(1200px) rotateY(${30 + index * 7}deg) scaleY(0.87) skewX(30deg)`,
-        left: `${-10 + index * 20}px`,
-        zIndex: 0,
-        opacity: 0.6
-      };
-    } else {
-      return {
-        transform: `perspective(1200px) rotateY(${-30 - index * 7}deg) scaleY(0.87) skewX(-30deg)`,
-        right: `${-10 + index * 20}px`,
-        zIndex: 0,
-        opacity: 0.6
-      };
-    }
-  };
-
-  return (
-    <div
-      className="absolute top-[200px] transition-all duration-700 ease-out"
-      style={getTransformStyle()}
-    >
-      <div
-        className="w-[147px] h-[216px] rounded-[15px] flex items-center justify-center shadow-[inset_0px_4px_4px_0px_rgba(103,202,255,0.5)]"
-        style={{ backgroundImage: 'linear-gradient(161.094deg, rgb(243, 162, 47) 5.0752%, rgb(226, 87, 87) 55.41%, rgb(254, 251, 159) 74.376%)' }}
-      >
-        <p className="font-['Orbitron',sans-serif] text-[32px] text-white">WIP</p>
-      </div>
-    </div>
-  );
-}
 
 export function Projects({ onProjectClick }: { onProjectClick: (projectKey: ProjectPage) => void }) {
   const [currentIndex, setCurrentIndex] = useState(1);
+
+  const containerVariants: any = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants: any = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.33, 1, 0.68, 1] }
+    }
+  };
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
@@ -204,51 +217,29 @@ export function Projects({ onProjectClick }: { onProjectClick: (projectKey: Proj
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden pt-[100px]">
-      <div className="relative h-[800px] w-full">
-        <WIPCard position="far-left" index={0} />
-        <WIPCard position="far-left" index={1} />
-        <WIPCard position="far-right" index={0} />
+    <motion.div 
+      className="h-full relative overflow-hidden flex flex-col items-center justify-center px-8"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.1 }}
+      variants={containerVariants}
+    >
+      <div className="relative h-[min(800px,70vh)] w-full max-w-7xl mx-auto">
 
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            position={getPosition(project.id)}
-            onProjectClick={onProjectClick}
-          />
-        ))}
+        {/* Project Carousel */}
+        <motion.div variants={itemVariants} className="relative w-full h-full">
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              position={getPosition(project.id)}
+              onProjectClick={onProjectClick}
+              onPrev={handlePrevious}
+              onNext={handleNext}
+            />
+          ))}
+        </motion.div>
       </div>
-
-      <div className="absolute bottom-[50px] left-1/2 transform -translate-x-1/2 flex items-center gap-[400px]">
-        <button
-          onClick={handlePrevious}
-          className="hover:scale-110 transition-transform"
-          aria-label="Previous project"
-        >
-          <svg className="w-[123.495px] h-[108.729px]" fill="none" preserveAspectRatio="none" viewBox="0 0 123.495 108.729">
-            <mask fill="white" id="path-left">
-              <path d={svgPaths.p356c2e00} />
-            </mask>
-            <path d={svgPaths.p356c2e00} fill="white" />
-            <path d={svgPaths.p1092a080} fill="white" mask="url(#path-left)" />
-          </svg>
-        </button>
-
-        <button
-          onClick={handleNext}
-          className="hover:scale-110 transition-transform"
-          aria-label="Next project"
-        >
-          <svg className="w-[123.495px] h-[108.729px]" fill="none" preserveAspectRatio="none" viewBox="0 0 123.495 108.729">
-            <mask fill="white" id="path-right">
-              <path d={svgPaths.p11f3b500} />
-            </mask>
-            <path d={svgPaths.p11f3b500} fill="white" />
-            <path d={svgPaths.pa9c4900} fill="white" mask="url(#path-right)" />
-          </svg>
-        </button>
-      </div>
-    </div>
+    </motion.div>
   );
 }

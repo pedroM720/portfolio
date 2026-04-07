@@ -15,6 +15,15 @@ interface NavigationProps {
 export function Navigation({ onScrollTo, refs }: NavigationProps) {
   const [hoveredNav, setHoveredNav] = useState<string | null>(null);
   const [activeNav, setActiveNav] = useState('home');
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const isHomeInView = useInView(refs.homeRef, { margin: "-50% 0px -50% 0px" });
   const isProjectsInView = useInView(refs.projectsRef, { margin: "-50% 0px -50% 0px" });
@@ -46,7 +55,11 @@ export function Navigation({ onScrollTo, refs }: NavigationProps) {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-white/10">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
+      isScrolled 
+        ? 'bg-black/60 backdrop-blur-xl py-2 border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]' 
+        : 'bg-transparent py-4 border-transparent'
+    }`}>
       <div className="flex items-center justify-between px-8 py-4">
         
         <button

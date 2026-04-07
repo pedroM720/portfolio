@@ -1,19 +1,11 @@
 import { useState, memo, FormEvent } from 'react';
-import { Github, Linkedin } from 'lucide-react';
+import { Github, Linkedin, Mail, Copy, Check } from 'lucide-react';
 import { motion, AnimatePresence } from "framer-motion";
 import emailjs from '@emailjs/browser';
 
-// ============================================================
-// EmailJS Configuration — Replace these with your real IDs!
-// 1. Sign up at https://www.emailjs.com (free: 200 emails/month)
-// 2. Add a Gmail/Outlook service → copy the Service ID
-// 3. Create an email template with variables:
-//    {{from_email}}, {{message}}, {{to_email}}
-// 4. Copy your Public Key from Account > API Keys
-// ============================================================
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+const EMAILJS_SERVICE_ID = 'service_sbgq2xe';
+const EMAILJS_TEMPLATE_ID = 'template_q7m6bpi';
+const EMAILJS_PUBLIC_KEY = 'MnW9n5sdpcspR3UOc';
 const RECIPIENT_EMAIL = 'banditstoes@gmail.com';
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error';
@@ -24,7 +16,7 @@ export const Contact = memo(() => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.15,
         delayChildren: 0.2
       }
     }
@@ -34,6 +26,13 @@ export const Contact = memo(() => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState<FormStatus>('idle');
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(RECIPIENT_EMAIL);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const getGlowStyle = (btnId: string) => ({
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
@@ -46,12 +45,12 @@ export const Contact = memo(() => {
   });
 
   const itemVariants: any = {
-    hidden: { opacity: 0, scale: 0.9, y: 20 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
+    hidden: { opacity: 0, x: -20, y: 30 },
+    visible: {
+      opacity: 1,
+      x: 0,
       y: 0,
-      transition: { duration: 0.5, ease: [0.23, 1, 0.32, 1] }
+      transition: { duration: 0.8, ease: [0.33, 1, 0.68, 1] }
     }
   };
 
@@ -99,26 +98,23 @@ export const Contact = memo(() => {
   };
 
   return (
-    <div className="min-h-screen py-20 px-4 pt-[100px] flex items-center">
-      <motion.div 
+    <div className="h-full py-12 px-4 relative overflow-y-auto flex flex-col items-center justify-start pt-[120px]">
+      <motion.div
         className="max-w-6xl mx-auto w-full"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Left Section - Socials */}
           <div className="flex flex-col gap-[57px] items-center">
-            <motion.h2 
-              className="font-['Orbitron',sans-serif] text-[64px] text-center text-white"
+            <motion.h2
+              className="font-['Orbitron',sans-serif] text-[clamp(32px,5vw,64px)] text-center text-white"
               variants={itemVariants}
             >
               Send a message
             </motion.h2>
-            
-            <motion.h3 
-              className="font-['Exo_2',sans-serif] text-[40px] text-center text-gray-300"
+
+            <motion.h3
+              className="font-['Exo_2',sans-serif] text-[clamp(24px,3vw,40px)] text-center text-gray-300"
               variants={itemVariants}
             >
               Socials
@@ -126,9 +122,9 @@ export const Contact = memo(() => {
 
             {/* Social Links */}
             <div className="flex gap-[67px] items-center">
-              <motion.a 
-                href="https://github.com/pedroM720" 
-                target="_blank" 
+              <motion.a
+                href="https://github.com/pedroM720"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="relative block shrink-0 rounded-full p-6 border-[3px] border-white hover:bg-white/10 transition-all group"
                 variants={itemVariants}
@@ -140,15 +136,15 @@ export const Contact = memo(() => {
                 <div className="relative z-10">
                   <Github className="w-[100px] h-[100px] text-white" strokeWidth={1.5} />
                 </div>
-                <span 
+                <span
                   className="absolute inset-0 rounded-full pointer-events-none"
                   style={getGlowStyle('github')}
                 />
               </motion.a>
-              
-              <motion.a 
-                href="https://www.linkedin.com/in/pedro7/" 
-                target="_blank" 
+
+              <motion.a
+                href="https://www.linkedin.com/in/pedro7/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="relative block shrink-0 rounded-full p-6 border-[3px] border-white hover:bg-white/10 transition-all group"
                 variants={itemVariants}
@@ -160,7 +156,7 @@ export const Contact = memo(() => {
                 <div className="relative z-10">
                   <Linkedin className="w-[100px] h-[100px] text-white" strokeWidth={1.5} />
                 </div>
-                <span 
+                <span
                   className="absolute inset-0 rounded-full pointer-events-none"
                   style={getGlowStyle('linkedin')}
                 />
@@ -168,8 +164,8 @@ export const Contact = memo(() => {
             </div>
 
             {/* Divider */}
-            <motion.div 
-              className="w-full h-[2px] bg-white/30" 
+            <motion.div
+              className="w-full h-[2px] bg-white/30"
               variants={itemVariants}
             />
           </div>
@@ -184,7 +180,7 @@ export const Contact = memo(() => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-transparent border-b-2 border-white/50 py-4 font-['Exo_2',sans-serif] text-[32px] text-white placeholder-[#a4a4a4] outline-none focus:border-blue-400 focus:border-white transition-all"
+                className="w-full bg-transparent border-b-2 border-white/50 py-4 font-['Exo_2',sans-serif] text-[clamp(18px,2.5vw,32px)] text-white placeholder-[#a4a4a4] outline-none focus:border-white transition-all"
               />
             </motion.div>
 
@@ -196,7 +192,7 @@ export const Contact = memo(() => {
                 rows={6}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="w-full bg-transparent border-b-2 border-white/50 py-4 font-['Exo_2',sans-serif] text-[32px] text-white placeholder-[#a4a4a4] outline-none focus:border-blue-400 focus:border-white transition-all resize-none"
+                className="w-full bg-transparent border-b-2 border-white/50 py-4 font-['Exo_2',sans-serif] text-[clamp(18px,2.5vw,32px)] text-white placeholder-[#a4a4a4] outline-none focus:border-white transition-all resize-none"
               />
             </motion.div>
 
@@ -214,10 +210,10 @@ export const Contact = memo(() => {
               )}
             </AnimatePresence>
 
-            <motion.button 
+            <motion.button
               type="submit"
               disabled={status === 'sending'}
-              className="relative self-start border border-white rounded-[15px] px-12 py-4 font-['Exo_2',sans-serif] text-[40px] text-white hover:bg-white/10 transition-colors group overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
+              className="relative self-start border border-white rounded-[15px] px-8 py-3 font-['Exo_2',sans-serif] text-[clamp(24px,3vw,40px)] text-white hover:bg-white/10 transition-colors group overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
               variants={itemVariants}
               whileHover={status !== 'sending' ? { scale: 1.05 } : {}}
               whileTap={status !== 'sending' ? { scale: 0.95 } : {}}
@@ -227,7 +223,7 @@ export const Contact = memo(() => {
               <span className="relative z-10">
                 {status === 'sending' ? 'Sending...' : 'Send'}
               </span>
-              <span 
+              <span
                 className="absolute inset-0 pointer-events-none"
                 style={getGlowStyle('send')}
               />

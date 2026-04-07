@@ -18,10 +18,10 @@ const PARTICLE_COUNT = 16;
 const EXPLOSION_LIFETIME = 1000; // ms
 const COLORS = [
   '#ffffff',
-  '#64c8ff',
-  '#00ff8c',
-  '#b482ff',
-  '#00e5ff',
+  '#e0e0e0',
+  '#c0c0c0',
+  '#a0a0a0',
+  '#808080',
 ];
 
 export const BinaryExplosion = memo(() => {
@@ -59,7 +59,7 @@ export const BinaryExplosion = memo(() => {
           rotation: Math.random() * Math.PI * 2,
           rotationSpeed: (Math.random() - 0.5) * 0.3,
           color: COLORS[Math.floor(Math.random() * COLORS.length)],
-          gravity: 0.08 + Math.random() * 0.04,
+          gravity: 0.12 + Math.random() * 0.05, // Slightly heavier for more binary feel
         });
       }
 

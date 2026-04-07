@@ -27,20 +27,21 @@ export const Home = memo(({ onNavigate }: HomeProps) => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
+        staggerChildren: 0.15,
+        delayChildren: 0.2
       }
     }
   };
 
   const itemVariants: any = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20, x: -20 },
     visible: {
       opacity: 1,
       y: 0,
+      x: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: [0.33, 1, 0.68, 1]
       }
     }
   };
@@ -62,12 +63,16 @@ export const Home = memo(({ onNavigate }: HomeProps) => {
 
       <motion.div 
         className="relative z-10 flex flex-col items-center gap-[50px] px-4"
-        initial="hidden"
-        animate="visible"
         variants={containerVariants}
       >
         <motion.h1
           variants={itemVariants}
+          animate={{ y: [0, -15, 0] }}
+          transition={{ 
+            duration: 6, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
           className="font-['Orbitron',sans-serif] text-[clamp(80px,15vw,200px)] tracking-[10px]"
           style={{ textShadow: "2px 3px 4px rgba(255,255,255,0.5)" }}
         >
@@ -76,6 +81,13 @@ export const Home = memo(({ onNavigate }: HomeProps) => {
         
         <motion.p
           variants={itemVariants}
+          animate={{ y: [0, -8, 0] }}
+          transition={{ 
+            duration: 5, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 0.5
+          }}
           className="font-['Exo_2',sans-serif] text-[clamp(24px,4vw,36px)]"
           style={{ textShadow: "0px 1px 3px rgba(104,104,104,0.5)" }}
         >

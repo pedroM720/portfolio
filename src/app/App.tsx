@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { Home } from './components/Home';
 import { About } from './components/About';
 import { Projects } from './components/Projects';
@@ -131,7 +131,12 @@ const projectData = {
 };
 
 export default function App() {
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('introSeen') !== 'true';
+    }
+    return true;
+  });
   const [currentProject, setCurrentProject] = useState<ProjectPage | null>(null);
   const [currentIndex, setCurrentIndex] = useState(1);
 
@@ -146,6 +151,12 @@ export default function App() {
     damping: 30,
     restDelta: 0.001
   });
+  
+  // Parallax offsets for different sections
+  const yHome = useTransform(scrollYProgress, [0, 0.2], [0, -50]);
+  const yProjects = useTransform(scrollYProgress, [0.1, 0.4], [50, -50]);
+  const yAbout = useTransform(scrollYProgress, [0.3, 0.7], [50, -50]);
+  const yContact = useTransform(scrollYProgress, [0.6, 1], [50, 0]);
 
   const handleScrollTo = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -168,7 +179,7 @@ export default function App() {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
+      transition: { duration: 0.8, ease: [0.33, 1, 0.68, 1] }
     }
   };
 
@@ -176,7 +187,13 @@ export default function App() {
     <div className="min-h-screen bg-black text-white relative flex flex-col">
       <AnimatePresence mode="wait">
         {showIntro ? (
-          <TerminalIntro key="intro" onComplete={() => setShowIntro(false)} />
+          <TerminalIntro 
+            key="intro" 
+            onComplete={() => {
+              setShowIntro(false);
+              localStorage.setItem('introSeen', 'true');
+            }} 
+          />
         ) : (
           <motion.div 
             key="main"
@@ -204,26 +221,28 @@ export default function App() {
               refs={{ homeRef, projectsRef, aboutRef, contactRef } as any}
             />
             
-            <main className="relative z-10 overflow-x-hidden">
+            <main className="relative z-10 h-screen overflow-y-auto snap-y snap-mandatory hide-scrollbar">
               <motion.section 
                 ref={homeRef}
+                className="min-h-screen snap-start shrink-0 bg-transparent relative"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.1 }}
                 variants={sectionVariants}
               >
                 <Home onNavigate={(page) => {
-                  if (page === 'projects') handleScrollTo(projectsRef);
-                  if (page === 'about') handleScrollTo(aboutRef);
-                  if (page === 'contact') handleScrollTo(contactRef);
+                  if (page === 'projects') handleScrollTo(projectsRef as any);
+                  if (page === 'about') handleScrollTo(aboutRef as any);
+                  if (page === 'contact') handleScrollTo(contactRef as any);
                 }} />
               </motion.section>
 
               <motion.section 
                 ref={projectsRef}
+                className="min-h-screen snap-start shrink-0 bg-transparent relative"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: false, amount: 0.1 }}
                 variants={sectionVariants}
               >
                 <Projects
@@ -233,9 +252,10 @@ export default function App() {
 
               <motion.section 
                 ref={aboutRef}
+                className="min-h-screen snap-start shrink-0 bg-transparent relative"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.1 }}
                 variants={sectionVariants}
               >
                 <About />
@@ -243,9 +263,10 @@ export default function App() {
 
               <motion.section 
                 ref={contactRef}
+                className="min-h-screen snap-start shrink-0 bg-transparent relative"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.1 }}
                 variants={sectionVariants}
               >
                 <Contact />

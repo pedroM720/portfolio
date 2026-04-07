@@ -4,6 +4,8 @@ import { useEffect, useRef, memo } from 'react';
 export const BinaryRain = memo(() => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
+  const scrollPosRef = useRef(0);
+  const scrollVelocityRef = useRef(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -35,6 +37,14 @@ export const BinaryRain = memo(() => {
       resizeTimer = window.setTimeout(setup, 200);
     };
     window.addEventListener('resize', handleResize);
+
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+      const velocity = Math.abs(currentScroll - scrollPosRef.current);
+      scrollVelocityRef.current = Math.min(velocity, 50); // Cap velocity
+      scrollPosRef.current = currentScroll;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     const chars = '01';
     let lastTime = 0;
@@ -70,7 +80,12 @@ export const BinaryRain = memo(() => {
           drops[i] = 0;
         }
 
-        drops[i]++;
+        // Apply scroll-based boost
+        const velocityBoost = scrollVelocityRef.current * 0.2;
+        drops[i] += 1 + velocityBoost;
+        
+        // Decay velocity
+        scrollVelocityRef.current *= 0.95;
       }
       animationRef.current = requestAnimationFrame(draw);
     };
@@ -90,6 +105,7 @@ export const BinaryRain = memo(() => {
     return () => {
       cancelAnimationFrame(animationRef.current);
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       clearTimeout(resizeTimer);
     };
