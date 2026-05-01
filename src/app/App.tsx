@@ -10,6 +10,10 @@ import { PageTransition } from './components/PageTransition';
 import { BinaryRain } from './components/BinaryRain';
 import { BinaryExplosion } from './components/BinaryExplosion';
 import { TerminalIntro } from './components/TerminalIntro';
+import { PlanWise } from './components/projects/PlanWise';
+import { PomoTime } from './components/projects/PomoTime';
+import { StudentManager } from './components/projects/StudentManager';
+import { Ouroboros } from './components/projects/Ouroboros';
 
 // --- IMPORTS (All images must be imported here to work on GitHub Pages) ---
 
@@ -275,16 +279,26 @@ export default function App() {
               <AnimatePresence>
                 {currentProject && (
                   <motion.div
-                    className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4"
+                    className="fixed inset-0 z-[40] bg-black overflow-y-auto"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                   >
                     <PageTransition>
-                      <ProjectDetail
-                        {...projectData[currentProject as keyof typeof projectData]}
-                        onBack={handleBackToProjects}
-                      />
+                      {currentProject === 'planwise' ? (
+                        <PlanWise onBack={handleBackToProjects} />
+                      ) : currentProject === 'pomotime' ? (
+                        <PomoTime onBack={handleBackToProjects} />
+                      ) : currentProject === 'studentmanager' ? (
+                        <StudentManager onBack={handleBackToProjects} />
+                      ) : currentProject === 'ouroboros' ? (
+                        <Ouroboros onBack={handleBackToProjects} />
+                      ) : (
+                        <ProjectDetail
+                          {...projectData[currentProject as keyof typeof projectData]}
+                          onBack={handleBackToProjects}
+                        />
+                      )}
                     </PageTransition>
                   </motion.div>
                 )}
