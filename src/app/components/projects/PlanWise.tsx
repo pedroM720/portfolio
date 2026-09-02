@@ -20,19 +20,11 @@ export function PlanWise({ onBack }: { onBack: () => void }) {
   const [revealedCards, setRevealedCards] = useState<number[]>([0]);
   const [revealedDevCards, setRevealedDevCards] = useState<number[]>([0]);
 
-  const isRevealed = (index: number) => revealedCards.includes(index);
-  const handleReveal = (index: number) => {
-    if (!revealedCards.includes(index)) {
-      setRevealedCards([...revealedCards, index]);
-    }
-  };
+  const isRevealed = (_index: number) => true;
+  const handleReveal = (_index: number) => {};
 
-  const isDevRevealed = (index: number) => revealedDevCards.includes(index);
-  const handleDevReveal = (index: number) => {
-    if (!revealedDevCards.includes(index)) {
-      setRevealedDevCards([...revealedDevCards, index]);
-    }
-  };
+  const isDevRevealed = (_index: number) => true;
+  const handleDevReveal = (_index: number) => {};
 
   const getSectionHoverStyle = (section: string) => ({
     opacity: hoveredSection === section ? 1 : 0,
@@ -114,7 +106,7 @@ export function PlanWise({ onBack }: { onBack: () => void }) {
           <div className="flex flex-col lg:flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
             <div className="content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[118px] items-center lg:items-start px-[40px] py-[40px] lg:py-[10px] relative w-full">
               <div className="content-stretch flex flex-col gap-[32px] items-start leading-[normal] relative shrink-0 text-white w-full max-w-[437px]">
-                <div 
+                <div
                   className="relative cursor-default inline-block"
                   onMouseEnter={() => setHoveredSection('problem')}
                   onMouseLeave={() => setHoveredSection(null)}
@@ -135,7 +127,7 @@ export function PlanWise({ onBack }: { onBack: () => void }) {
           <div className="flex flex-col lg:flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
             <div className="content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[118px] items-center lg:items-start px-[40px] py-[40px] lg:py-[10px] relative w-full">
               <div className="content-stretch flex flex-col gap-[32px] items-start leading-[normal] relative shrink-0 text-white w-full max-w-[437px]">
-                <div 
+                <div
                   className="relative cursor-default inline-block"
                   onMouseEnter={() => setHoveredSection('solution')}
                   onMouseLeave={() => setHoveredSection(null)}
@@ -155,7 +147,7 @@ export function PlanWise({ onBack }: { onBack: () => void }) {
         <div className="bg-transparent relative w-full">
           <div className="flex flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
             <div className="content-stretch flex items-start px-[40px] py-[10px] relative w-full">
-              <div 
+              <div
                 className="relative cursor-default inline-block"
                 onMouseEnter={() => setHoveredSection('design')}
                 onMouseLeave={() => setHoveredSection(null)}
@@ -169,15 +161,15 @@ export function PlanWise({ onBack }: { onBack: () => void }) {
 
         <div className="bg-transparent content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[70px] items-center justify-center overflow-clip py-[10px] relative w-full px-4 max-w-[1200px] mx-auto">
           {/* DEFINE */}
-          <div 
+          <div
             className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] h-[320px] w-full max-w-[280px] transition-all duration-500 cursor-pointer ${isRevealed(0) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
             onClick={() => handleReveal(0)}
           >
             {!isRevealed(0) && (
               <div className="absolute inset-0 bg-black/60 rounded-[15px] z-20 pointer-events-none flex items-center justify-center">
-                 <div className="bg-white/10 rounded-full p-3 backdrop-blur-sm border border-white/20">
-                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                 </div>
+                <div className="bg-white/10 rounded-full p-3 backdrop-blur-sm border border-white/20">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                </div>
               </div>
             )}
             <div className="bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full">
@@ -200,15 +192,15 @@ export function PlanWise({ onBack }: { onBack: () => void }) {
           </div>
 
           {/* IDEATE */}
-          <div 
+          <div
             className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] h-[320px] w-full max-w-[280px] transition-all duration-500 cursor-pointer ${isRevealed(1) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
             onClick={() => handleReveal(1)}
           >
             {!isRevealed(1) && (
               <div className="absolute inset-0 bg-black/60 rounded-[15px] z-20 pointer-events-none flex items-center justify-center">
-                 <div className="bg-white/10 rounded-full p-3 backdrop-blur-sm border border-white/20">
-                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                 </div>
+                <div className="bg-white/10 rounded-full p-3 backdrop-blur-sm border border-white/20">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                </div>
               </div>
             )}
             <div className="bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full">
@@ -235,15 +227,15 @@ export function PlanWise({ onBack }: { onBack: () => void }) {
           </div>
 
           {/* DESIGN */}
-          <div 
+          <div
             className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] h-[320px] w-full max-w-[280px] transition-all duration-500 cursor-pointer ${isRevealed(2) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
             onClick={() => handleReveal(2)}
           >
             {!isRevealed(2) && (
               <div className="absolute inset-0 bg-black/60 rounded-[15px] z-20 pointer-events-none flex items-center justify-center">
-                 <div className="bg-white/10 rounded-full p-3 backdrop-blur-sm border border-white/20">
-                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                 </div>
+                <div className="bg-white/10 rounded-full p-3 backdrop-blur-sm border border-white/20">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                </div>
               </div>
             )}
             <div className="bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full">
@@ -282,7 +274,7 @@ export function PlanWise({ onBack }: { onBack: () => void }) {
           <div className="flex flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
             <div className="content-stretch flex items-start px-[40px] py-[10px] relative w-full">
               <div className="content-stretch flex items-start relative w-full">
-                <div 
+                <div
                   className="relative cursor-default inline-block font-['IBM_Plex_Mono',sans-serif] leading-[1.2] not-italic text-[52px] text-white tracking-[2.08px]"
                   onMouseEnter={() => setHoveredSection('development')}
                   onMouseLeave={() => setHoveredSection(null)}
@@ -302,7 +294,7 @@ export function PlanWise({ onBack }: { onBack: () => void }) {
           {/* Top Row: CONVERT -> BACKEND */}
           <div className="content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[20px] items-center justify-center relative w-full px-4">
             {/* CONVERT */}
-            <div 
+            <div
               className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(0) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(0)}
             >
@@ -338,7 +330,7 @@ export function PlanWise({ onBack }: { onBack: () => void }) {
             </div>
 
             {/* BACKEND */}
-            <div 
+            <div
               className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(1) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(1)}
             >
@@ -369,7 +361,7 @@ export function PlanWise({ onBack }: { onBack: () => void }) {
           {/* Bottom Row: FRONTEND -> TEST */}
           <div className="content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[20px] items-center justify-center relative w-full px-4">
             {/* FRONTEND */}
-            <div 
+            <div
               className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(2) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(2)}
             >
@@ -408,7 +400,7 @@ export function PlanWise({ onBack }: { onBack: () => void }) {
             </div>
 
             {/* TEST */}
-            <div 
+            <div
               className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(3) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(3)}
             >

@@ -33,12 +33,11 @@ const PM_ASCII = String.raw`
 const TARGET_TEXT = 'Hello!';
 const HEX_CHARS = '0123456789ABCDEF';
 
-type IntroStage = 'wireframe' | 'descrambling' | 'wait-enter' | 'ascii' | 'prompt' | 'boom';
+type IntroStage = 'wireframe' | 'descrambling' | 'wait-enter' | 'ascii' | 'boom';
 
 export function TerminalIntro({ onComplete }: TerminalIntroProps) {
   const [stage, setStage] = useState<IntroStage>('wireframe');
   const [displayText, setDisplayText] = useState('48656C6C6F21');
-  const [userInput, setUserInput] = useState('');
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   // Handle Resize
@@ -54,10 +53,13 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
   // Transitions
   useEffect(() => {
     if (stage === 'ascii') {
-      const timer = setTimeout(() => setStage('prompt'), 800);
+      const timer = setTimeout(() => {
+        setStage('boom');
+        setTimeout(onComplete, 1600);
+      }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [stage]);
+  }, [stage, onComplete]);
 
   // Main descrambling animation
   useEffect(() => {
@@ -86,17 +88,18 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
     return () => clearInterval(interval);
   }, [stage]);
 
-  // Handle keyboard inputs
-  const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    if (stage === 'wait-enter' && e.key === 'Enter') {
+  // Handle inputs (Keyboard & Touch/Click)
+  const handleProceed = useCallback(() => {
+    if (stage === 'wait-enter') {
       setStage('ascii');
-    } else if (stage === 'prompt') {
-      setUserInput(e.key.length === 1 ? e.key : '');
-      setStage('boom');
-      // Shortened stay for the transition as requested
-      setTimeout(onComplete, 1600);
     }
-  }, [stage, onComplete]);
+  }, [stage]);
+
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (stage === 'wait-enter' && (e.key === 'Enter' || e.key === ' ')) {
+      handleProceed();
+    }
+  }, [stage, handleProceed]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -170,7 +173,11 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
   }, [dimensions]);
 
   return (
-    <div className="fixed inset-0 z-[200] bg-black flex items-center justify-center overflow-hidden">
+    <div 
+      onClick={handleProceed}
+      onTouchStart={handleProceed}
+      className={`fixed inset-0 z-[200] bg-black flex items-center justify-center overflow-hidden ${stage === 'wait-enter' ? 'cursor-pointer select-none' : ''}`}
+    >
       {/* Dynamic Circuitry */}
       {stage === 'wireframe' && (
         <motion.svg
@@ -256,7 +263,7 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
                   </div>
 
                   {/* Optional status line */}
-                  {(stage === 'wait-enter' || stage === 'ascii' || stage === 'prompt') && (
+                  {(stage === 'wait-enter' || stage === 'ascii') && (
                     <motion.div
                       className="flex items-center gap-3"
                       initial={{ opacity: 0, x: -10 }}
@@ -264,13 +271,13 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
                     >
                       <span className="text-emerald-500 font-bold">{">"}</span>
                       <span className="text-white/40 text-sm tracking-widest uppercase italic">
-                        [ press enter to initialize ]
+                        {stage === 'wait-enter' ? '[ press enter or tap to initialize ]' : '[ initializing system... ]'}
                       </span>
                     </motion.div>
                   )}
                 </div>
 
-                {(stage === 'ascii' || stage === 'prompt') && (
+                {stage === 'ascii' && (
                   <motion.div
                     className="flex flex-col gap-10 mt-6"
                     initial={{ opacity: 0, y: 30 }}
@@ -283,31 +290,6 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
                         {PM_ASCII}
                       </pre>
                     </div>
-
-                    {stage === 'prompt' && (
-                      <motion.div
-                        className="flex flex-col gap-6 border-t border-white/5 pt-10"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                      >
-                        <div className="flex items-center gap-3">
-                          <span className="text-emerald-500 font-bold">{">"}</span>
-                          <div className="text-zinc-600 text-[10px] tracking-[0.5em] uppercase font-black">Link Established // Port 8080 Active</div>
-                        </div>
-                        <div className="flex items-center gap-8 text-[24px] sm:text-[40px]">
-                          <span className="text-emerald-500 font-bold">{">"}</span>
-                          <span className="text-indigo-400 font-black">CONTINUE? [Y/N]:</span>
-                          <span className="text-white bg-white/5 px-6 min-w-[1.5ch] font-black">{userInput}</span>
-                          {!userInput && (
-                            <motion.span
-                              animate={{ opacity: [1, 0] }}
-                              transition={{ repeat: Infinity, duration: 0.8 }}
-                              className="w-5 h-12 bg-white"
-                            />
-                          )}
-                        </div>
-                      </motion.div>
-                    )}
                   </motion.div>
                 )}
               </motion.div>

@@ -20,19 +20,11 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
   const [revealedCards, setRevealedCards] = useState<number[]>([0]);
   const [revealedDevCards, setRevealedDevCards] = useState<number[]>([0]);
 
-  const isRevealed = (index: number) => revealedCards.includes(index);
-  const handleReveal = (index: number) => {
-    if (!revealedCards.includes(index)) {
-      setRevealedCards([...revealedCards, index]);
-    }
-  };
+  const isRevealed = (_index: number) => true;
+  const handleReveal = (_index: number) => {};
 
-  const isDevRevealed = (index: number) => revealedDevCards.includes(index);
-  const handleDevReveal = (index: number) => {
-    if (!revealedDevCards.includes(index)) {
-      setRevealedDevCards([...revealedDevCards, index]);
-    }
-  };
+  const isDevRevealed = (_index: number) => true;
+  const handleDevReveal = (_index: number) => {};
 
   const getSectionHoverStyle = (section: string) => ({
     opacity: hoveredSection === section ? 1 : 0,

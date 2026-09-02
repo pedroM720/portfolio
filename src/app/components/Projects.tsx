@@ -134,13 +134,13 @@ function ProjectCard({ project, position, onProjectClick, onPrev, onNext }: Proj
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="absolute top-[50px] transition-all duration-700 ease-out cursor-pointer outline-none border-none bg-transparent p-0"
+      className="absolute top-1/2 -translate-y-1/2 transition-all duration-700 ease-out cursor-pointer outline-none border-none bg-transparent p-0"
       style={getTransformStyle()}
     >
       {/* Luminous Glow for lateral cards */}
       {position !== 'center' && (
         <motion.div
-          className="absolute inset-0 rounded-[15px] pointer-events-none"
+          className="absolute inset-0 rounded-[20px] pointer-events-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
           style={{
@@ -153,7 +153,7 @@ function ProjectCard({ project, position, onProjectClick, onPrev, onNext }: Proj
       )}
 
       <div
-        className={`w-[393px] h-[575px] rounded-[15px] p-6 flex flex-col items-center gap-6 shadow-[inset_0px_4px_4px_0px_rgba(103,202,255,0.5)] transition-all ${
+        className={`w-[393px] h-[550px] rounded-[24px] p-6 flex flex-col items-center justify-center gap-6 shadow-[inset_0px_4px_4px_0px_rgba(103,202,255,0.5)] transition-all ${
           position === 'center' ? 'hover:scale-105' : 'hover:scale-[0.98]'
         } ${
           isHovered && position !== 'center' ? 'border-2 border-white/50' : 'border border-transparent'
@@ -167,7 +167,7 @@ function ProjectCard({ project, position, onProjectClick, onPrev, onNext }: Proj
           </h2>
         </div>
         
-        <p className="font-['Exo_2',sans-serif] text-[40px] text-white leading-[1.2] text-center max-w-[340px]">
+        <p className="font-['Exo_2',sans-serif] text-[36px] text-white leading-[1.2] text-center max-w-[340px]">
           {project.description}
         </p>
       </div>
@@ -218,13 +218,13 @@ export function Projects({ onProjectClick }: { onProjectClick: (projectKey: Proj
 
   return (
     <motion.div 
-      className="h-full relative overflow-hidden flex flex-col items-center justify-center px-8"
+      className="h-full relative flex flex-col items-center justify-center px-8"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.1 }}
       variants={containerVariants}
     >
-      <div className="relative h-[min(800px,70vh)] w-full max-w-7xl mx-auto">
+      <div className="relative h-[620px] w-full max-w-7xl mx-auto flex items-center justify-center">
 
         {/* Project Carousel */}
         <motion.div variants={itemVariants} className="relative w-full h-full">
