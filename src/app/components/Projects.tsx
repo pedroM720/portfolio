@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ProjectPage } from '../App';
 import svgPaths from "../../imports/svg-vh8gv959zq";
-// Change this to your new image path
 import ouroborosIcon from "../../assets/b81b4a2f1d6dd33617eaa8d69e28710e079f0b7b.png";
 
 interface Project {
@@ -10,7 +9,7 @@ interface Project {
   name: string;
   description: string;
   gradient: string;
-  icon: 'calendar' | 'timer' | 'school' | 'ouroboros';
+  icon: 'calendar' | 'timer' | 'globe' | 'ouroboros' | 'vlm';
   projectKey: ProjectPage;
 }
 
@@ -33,11 +32,11 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    name: 'Student\nManager',
-    description: 'Classroom tool for educators',
-    gradient: 'linear-gradient(160.619deg, rgb(25, 118, 210) 1.4278%, rgb(128, 49, 184) 42.812%, rgb(29, 83, 219) 74.376%)',
-    icon: 'school',
-    projectKey: 'studentmanager'
+    name: 'Biodiversity\nGlobe',
+    description: 'Interactive 3D biosphere & evolutionary data',
+    gradient: 'linear-gradient(160.619deg, rgb(16, 185, 129) 1.4278%, rgb(6, 182, 212) 42.812%, rgb(29, 78, 216) 74.376%)',
+    icon: 'globe',
+    projectKey: 'biodiversityglobe'
   },
   {
     id: 3,
@@ -46,6 +45,14 @@ const projects: Project[] = [
     gradient: 'linear-gradient(161.094deg, rgb(115, 36, 180) 5.0752%, rgb(63, 19, 97) 55.41%, rgb(49, 13, 62) 74.376%)',
     icon: 'ouroboros', 
     projectKey: 'ouroboros'
+  },
+  {
+    id: 4,
+    name: 'PLaMo\nVLM',
+    description: 'Edge AI visual language engine for drones',
+    gradient: 'linear-gradient(161.094deg, rgb(14, 165, 233) 5.0752%, rgb(3, 105, 161) 55.41%, rgb(15, 23, 42) 74.376%)',
+    icon: 'vlm',
+    projectKey: 'vlm'
   }
 ];
 
@@ -108,12 +115,11 @@ function ProjectCard({ project, position, onProjectClick, onPrev, onNext }: Proj
           </g>
         </svg>
       );
-    } else if (project.icon === 'school') {
+    } else if (project.icon === 'globe') {
       return (
-        <svg className="w-[89px] h-[89px]" fill="none" preserveAspectRatio="none" viewBox="0 0 89 89">
-          <g transform="translate(7.417, 13.833)">
-            <path d={svgPaths.p20d3ca00} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" />
-          </g>
+        <svg className="w-[89px] h-[89px]" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="1.5">
+          <circle cx="12" cy="12" r="10" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
         </svg>
       );
     } else if (project.icon === 'ouroboros') {
@@ -121,6 +127,12 @@ function ProjectCard({ project, position, onProjectClick, onPrev, onNext }: Proj
         <div className="w-[98.351px] h-[94.839px] relative rounded-[20px] overflow-hidden">
           <img alt="" className="absolute h-[283.95%] left-[-19.37%] max-w-none top-[-36.85%] w-[356.78%]" src={ouroborosIcon} />
         </div>
+      );
+    } else if (project.icon === 'vlm') {
+      return (
+        <svg className="w-[89px] h-[89px]" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="1.5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
+        </svg>
       );
     }
   };

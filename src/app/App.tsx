@@ -12,8 +12,9 @@ import { BinaryExplosion } from './components/BinaryExplosion';
 import { TerminalIntro } from './components/TerminalIntro';
 import { PlanWise } from './components/projects/PlanWise';
 import { PomoTime } from './components/projects/PomoTime';
-import { StudentManager } from './components/projects/StudentManager';
+import { BiodiversityGlobe } from './components/projects/BiodiversityGlobe';
 import { Ouroboros } from './components/projects/Ouroboros';
+import { VlmDrone } from './components/projects/VlmDrone';
 
 // --- IMPORTS (All images must be imported here to work on GitHub Pages) ---
 
@@ -28,25 +29,26 @@ import planWisePreview from '../assets/planwise.png';
 import tsIcon from '../assets/5c8cd8082fc863b5c16f485b27bafeeac681c54a.png';
 import pomoPreview from '../assets/1524cd9fa5bebf0365746caced0bd3e3ee47e890.png';
 
-// Student Manager Assets
-import javaIcon from '../assets/f05e692f410dd50d885e94060e10923fbe744ed9.png';
-import mysqlIcon from '../assets/6701a649c6e7634c2632d26ab2f29d709a919248.png';
-import studentPreview from '../assets/fd5b37658e61da4a2410365058567365fa884c3f.png';
+// Biodiversity Globe Assets
+import bioPreview from '../assets/proj_assets/Screenshot 2026-04-27 225637.png';
 
 // Ouroboros Assets
 import geminiIcon from '../assets/63ab5154e3f6ccf09ca30971d3475493d7ef4a1f.png';
 import spoonosIcon from '../assets/0aa0820a07f48698d9754f42eabac3bd013844db.png';
 import ouroborosPreview from '../assets/926e03d10b577d1b9ff84f9264eab8206f8f5a08.png';
 
+// PLaMo VLM Assets
+import vlmPreview from '../assets/proj_assets/Screenshot 2026-06-03 115850.png';
+
 export type Page = 'home' | 'about' | 'projects' | 'contact';
-export type ProjectPage = 'planwise' | 'pomotime' | 'studentmanager' | 'ouroboros';
+export type ProjectPage = 'planwise' | 'pomotime' | 'biodiversityglobe' | 'ouroboros' | 'vlm';
 
 export interface Project {
   id: number;
   name: string;
   description: string;
   gradient: string;
-  icon: 'calendar' | 'timer' | 'school' | 'ouroboros';
+  icon: 'calendar' | 'timer' | 'globe' | 'ouroboros' | 'vlm';
   projectKey: ProjectPage;
 }
 
@@ -69,11 +71,11 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    name: 'Student\nManager',
-    description: 'Classroom tool for educators',
-    gradient: 'linear-gradient(160.619deg, rgb(25, 118, 210) 1.4278%, rgb(128, 49, 184) 42.812%, rgb(29, 83, 219) 74.376%)',
-    icon: 'school',
-    projectKey: 'studentmanager'
+    name: 'Biodiversity\nGlobe',
+    description: 'Interactive 3D biosphere & evolutionary data',
+    gradient: 'linear-gradient(160.619deg, rgb(16, 185, 129) 1.4278%, rgb(6, 182, 212) 42.812%, rgb(29, 78, 216) 74.376%)',
+    icon: 'globe',
+    projectKey: 'biodiversityglobe'
   },
   {
     id: 3,
@@ -82,6 +84,14 @@ export const projects: Project[] = [
     gradient: 'linear-gradient(161.094deg, rgb(115, 36, 180) 5.0752%, rgb(63, 19, 97) 55.41%, rgb(49, 13, 62) 74.376%)',
     icon: 'ouroboros',
     projectKey: 'ouroboros'
+  },
+  {
+    id: 4,
+    name: 'PLaMo\nVLM',
+    description: 'Edge AI visual language engine for drones',
+    gradient: 'linear-gradient(161.094deg, rgb(14, 165, 233) 5.0752%, rgb(3, 105, 161) 55.41%, rgb(15, 23, 42) 74.376%)',
+    icon: 'vlm',
+    projectKey: 'vlm'
   }
 ];
 
@@ -109,16 +119,15 @@ const projectData = {
     githubUrl: 'https://github.com/pedroM720/PomoApp',
     previewImage: pomoPreview
   },
-  studentmanager: {
-    name: 'Student Manager',
-    description: 'Classroom tool for educators. A comprehensive platform for managing student information, assignments, and classroom activities efficiently.',
+  biodiversityglobe: {
+    name: 'Biodiversity Globe',
+    description: 'An interactive 3D exploration of human evolutionary adaptation through planetary data and biological narratives.',
     stack: [
       { name: 'React', image: reactIcon },
-      { name: 'Java', image: javaIcon },
-      { name: 'MySQL', image: mysqlIcon }
+      { name: 'TypeScript', image: tsIcon }
     ],
-    githubUrl: 'https://github.com/pedroM720/Full-Stack-Student-Database-Project',
-    previewImage: studentPreview
+    githubUrl: 'https://pedro-martinez-ib35-creative.vercel.app/',
+    previewImage: bioPreview
   },
   ouroboros: {
     name: 'Ouroboros',
@@ -131,6 +140,16 @@ const projectData = {
     ],
     githubUrl: 'https://github.com/pedroM720/ouroboros',
     previewImage: ouroborosPreview
+  },
+  vlm: {
+    name: 'PLaMo VLM',
+    description: 'Real-time Edge AI Visual Language Engine deployed on NVIDIA Jetson AGX Orin for drone target detection.',
+    stack: [
+      { name: 'React', image: reactIcon },
+      { name: 'Python', image: pythonIcon },
+      { name: 'TypeScript', image: tsIcon }
+    ],
+    previewImage: vlmPreview
   }
 };
 
@@ -289,10 +308,12 @@ export default function App() {
                         <PlanWise onBack={handleBackToProjects} />
                       ) : currentProject === 'pomotime' ? (
                         <PomoTime onBack={handleBackToProjects} />
-                      ) : currentProject === 'studentmanager' ? (
-                        <StudentManager onBack={handleBackToProjects} />
+                      ) : currentProject === 'biodiversityglobe' ? (
+                        <BiodiversityGlobe onBack={handleBackToProjects} />
                       ) : currentProject === 'ouroboros' ? (
                         <Ouroboros onBack={handleBackToProjects} />
+                      ) : currentProject === 'vlm' ? (
+                        <VlmDrone onBack={handleBackToProjects} />
                       ) : (
                         <ProjectDetail
                           {...projectData[currentProject as keyof typeof projectData]}

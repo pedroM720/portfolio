@@ -1,18 +1,15 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-
 import svgPaths from "./svg-lw7r9sbh42";
 import backSvgPaths from "../../../imports/svg-6x7i7gg00i";
 
-import imgFrame4 from "../../../assets/planwise/3bae832acecc27eba42a751e2323a0ec995662f9.png";
-import imgImage15 from "../../../assets/planwise/866b2bb0d815e015d62c6f372c869abe06b1b33c.png";
-import imgImage26 from "../../../assets/planwise/0aa0820a07f48698d9754f42eabac3bd013844db.png";
-import imgImage27 from "../../../assets/planwise/63ab5154e3f6ccf09ca30971d3475493d7ef4a1f.png";
-import imgImage16 from "../../../assets/planwise/d434f57587bc5db10671cc4fd5de71a9b6512455.png";
-import imgUnsplashIm7LZjxeLhg from "../../../assets/planwise/a0231aae45ed31c2c5873645d3f1d6397f658bc6.png";
-import imgUnsplashODkYSvidB4 from "../../../assets/planwise/87a851b3b6d17a0df7b3becd752cf7cb5ae8be73.png";
-import planwiseCalendar from "../../../assets/planwise/planwise-calendar.png";
+import geminiIcon from "../../../assets/63ab5154e3f6ccf09ca30971d3475493d7ef4a1f.png";
+import spoonosIcon from "../../../assets/0aa0820a07f48698d9754f42eabac3bd013844db.png";
+import reactIcon from "../../../assets/866b2bb0d815e015d62c6f372c869abe06b1b33c.png";
+import pythonIcon from "../../../assets/d434f57587bc5db10671cc4fd5de71a9b6512455.png";
+
 import ouroborosHero from "../../../assets/926e03d10b577d1b9ff84f9264eab8206f8f5a08.png";
+import ouroToolsScreenshot from "../../../assets/proj_assets/Screenshot 2025-11-23 093957.png";
+import ouroChessScreenshot from "../../../assets/proj_assets/ouro_chessgoat.png";
 
 export function Ouroboros({ onBack }: { onBack: () => void }) {
   const [isBackHovered, setIsBackHovered] = useState(false);
@@ -52,6 +49,7 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
         </button>
       </div>
 
+      {/* --- HERO SECTION --- */}
       <div className="content-stretch flex flex-col items-start justify-center overflow-clip relative w-full max-w-[1200px] mx-auto min-h-[752px]">
 
         {/* SVG Lines */}
@@ -72,36 +70,47 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
               <p className="font-['IBM_Plex_Mono',sans-serif] h-[131px] leading-[normal] not-italic relative shrink-0 text-[156px] text-white w-[225px] -mt-[10px]">04</p>
             </div>
 
-            <div className="content-stretch flex flex-col gap-[10px] h-[328px] items-start overflow-visible pb-[17px] pr-[23px] relative shrink-0 w-[479px]">
+            <div className="content-stretch flex flex-col gap-[10px] min-h-[328px] items-start overflow-visible pb-[17px] pr-[23px] relative shrink-0 w-[479px]">
               <p className="font-['JetBrains_Mono',sans-serif] font-normal h-[76px] leading-[normal] relative shrink-0 text-[40px] text-white w-[380px]">OUROBOROS</p>
-              <p className="font-['JetBrains_Mono',sans-serif] font-normal h-[167px] leading-[normal] relative shrink-0 text-[20px] text-white w-[380px]">Tool backed generative agent. Self Adapting Agentic framework that generates tools to help it complete tasks and save compute while beating GPT5 on certain benchmarks.</p>
+              <p className="font-['JetBrains_Mono',sans-serif] font-normal min-h-[140px] leading-[normal] relative shrink-0 text-[18px] text-white/90 w-[380px]">Tool-backed generative agent framework. Self-adapting agentic system that generates custom tools dynamically to complete tasks and save compute while outperforming frontier models on domain-specific benchmarks.</p>
 
-              <div className="content-stretch flex gap-[14px] h-[71px] items-center overflow-clip pr-[11px] py-[19px] relative shrink-0 w-[356px]">
-                <div className="relative shrink-0 size-[52px]" data-name="image 15">
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <img alt="" className="absolute h-[100.29%] left-[-24.56%] max-w-none top-[-0.15%] w-[152.63%]" src={imgImage15} />
-                  </div>
+              {/* Stack Icons & GitHub Repo Link */}
+              <div className="content-stretch flex items-center gap-[14px] h-[71px] relative shrink-0 w-full mt-2">
+                <div className="relative shrink-0 size-[52px]" title="Gemini">
+                  <img alt="Gemini" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={geminiIcon} />
                 </div>
-                <div className="relative shrink-0 size-[52px]" data-name="image 26">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage26} />
+                <div className="relative shrink-0 size-[52px]" title="SpoonOS">
+                  <img alt="SpoonOS" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={spoonosIcon} />
                 </div>
-                <div className="relative shrink-0 size-[52px]" data-name="image 27">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage27} />
+                <div className="relative shrink-0 size-[52px]" title="React">
+                  <img alt="React" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={reactIcon} />
                 </div>
-                <div className="relative shrink-0 size-[52px]" data-name="image 16">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage16} />
+                <div className="relative shrink-0 size-[52px]" title="Python">
+                  <img alt="Python" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={pythonIcon} />
                 </div>
+
+                <a
+                  href="https://github.com/pedroM720/ouroboros"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white font-['JetBrains_Mono',sans-serif] font-bold px-4 py-2.5 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.7)] hover:scale-105 text-sm ml-2"
+                >
+                  <span>GITHUB REPO ↗</span>
+                </a>
               </div>
             </div>
           </div>
 
           <div className="relative shrink-0 w-full lg:w-1/2 flex justify-end pr-[40px]">
-            <img src={ouroborosHero} alt="Ouroboros Hero" className="w-full max-w-[700px] h-auto object-contain rounded-[15px] shadow-[0px_0px_30px_5px_rgba(225,216,216,0.3)]" />
+            <img src={ouroborosHero} alt="Ouroboros Hero" className="w-full max-w-[700px] h-auto object-contain rounded-[15px] shadow-[0px_0px_30px_5px_rgba(168,85,247,0.3)] border border-purple-500/30" />
           </div>
         </div>
       </div>
 
+      {/* --- CONTENT DETAILS --- */}
       <div className="bg-black content-stretch flex flex-col gap-[48px] items-center overflow-clip pb-[32px] pt-[64px] relative w-full">
+        
+        {/* PROBLEM STATEMENT */}
         <div className="bg-transparent relative w-full">
           <div className="flex flex-col lg:flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
             <div className="content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[118px] items-center lg:items-start px-[40px] py-[40px] lg:py-[10px] relative w-full">
@@ -114,15 +123,18 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
                   <p className="font-['IBM_Plex_Mono',sans-serif] not-italic relative z-10 shrink-0 text-[52px] tracking-[2.08px] transition-colors duration-300">PR0BLEM STATEMENT</p>
                   <span className="absolute bottom-[-4px] left-0 right-0 border-b-[4px] border-dashed border-white transition-opacity duration-300 pointer-events-none z-10" style={getSectionHoverStyle('problem')} />
                 </div>
-                <p className="font-['JetBrains_Mono',sans-serif] font-normal relative shrink-0 text-[20px] tracking-[0.8px]">{`Apps like When2Meet work but leave a lot to be desired like g-cal integration, UI upgrades, and easier schedule planning `}</p>
+                <p className="font-['JetBrains_Mono',sans-serif] font-normal relative shrink-0 text-[18px] tracking-[0.8px] text-white/90">
+                  Standard LLMs struggle with deterministic computational tasks (like chess FEN calculations, letter counting, or algorithmic optimization), wasting massive amounts of compute tokens trying to reason through pure text generation.
+                </p>
               </div>
-              <div className="h-[403px] relative shadow-[0px_0px_25px_5px_rgba(225,216,216,0.4)] shrink-0 w-full max-w-[570px]">
-                <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full rounded-lg" src={imgUnsplashODkYSvidB4} />
+              <div className="relative shadow-[0px_0px_25px_5px_rgba(168,85,247,0.3)] shrink-0 w-full max-w-[570px] rounded-lg overflow-hidden border border-purple-500/20 bg-black">
+                <img alt="Ouroboros Dynamic Tool Generation" className="w-full h-auto max-h-[400px] object-contain rounded-lg block" src={ouroToolsScreenshot} />
               </div>
             </div>
           </div>
         </div>
 
+        {/* SOLUTION */}
         <div className="bg-transparent relative w-full">
           <div className="flex flex-col lg:flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
             <div className="content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[118px] items-center lg:items-start px-[40px] py-[40px] lg:py-[10px] relative w-full">
@@ -135,15 +147,18 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
                   <p className="font-['IBM_Plex_Mono',sans-serif] not-italic relative z-10 shrink-0 text-[52px] tracking-[2.08px] transition-colors duration-300">S0LUTI0N</p>
                   <span className="absolute bottom-[-4px] left-0 right-0 border-b-[4px] border-dashed border-white transition-opacity duration-300 pointer-events-none z-10" style={getSectionHoverStyle('solution')} />
                 </div>
-                <p className="font-['JetBrains_Mono',sans-serif] font-normal relative shrink-0 text-[20px] tracking-[0.8px]">Ouroboros is a robust framework with recursive tool calling</p>
+                <p className="font-['JetBrains_Mono',sans-serif] font-normal relative shrink-0 text-[18px] tracking-[0.8px] text-white/90">
+                  Ouroboros dynamically writes, compiles, and registers custom execution tools on the fly. Once created, these tools execute deterministically in milliseconds, saving compute and beating frontier models like GPT-5 on specialized benchmarks (such as hook-based chess engine calculations without blundering pieces).
+                </p>
               </div>
-              <div className="h-[428px] relative shadow-[0px_0px_25px_5px_rgba(225,216,216,0.4)] shrink-0 w-full max-w-[570px]">
-                <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full rounded-lg" src={imgUnsplashODkYSvidB4} />
+              <div className="relative shadow-[0px_0px_25px_5px_rgba(168,85,247,0.3)] shrink-0 w-full max-w-[570px] rounded-lg overflow-hidden border border-purple-500/20 bg-black">
+                <img alt="Ouroboros Chess Engine Integration vs GPT-5" className="w-full h-auto max-h-[420px] object-contain rounded-lg block" src={ouroChessScreenshot} />
               </div>
             </div>
           </div>
         </div>
 
+        {/* DESIGN PROCESS */}
         <div className="bg-transparent relative w-full">
           <div className="flex flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
             <div className="content-stretch flex items-start px-[40px] py-[10px] relative w-full">
@@ -159,19 +174,13 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
           </div>
         </div>
 
+        {/* PROCESS CARDS */}
         <div className="bg-transparent content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[70px] items-center justify-center overflow-clip py-[10px] relative w-full px-4 max-w-[1200px] mx-auto">
           {/* DEFINE */}
           <div 
-            className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] h-[320px] w-full max-w-[280px] transition-all duration-500 cursor-pointer ${isRevealed(0) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
+            className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(168,85,247,0.4)] h-[320px] w-full max-w-[280px] transition-all duration-500 cursor-pointer ${isRevealed(0) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
             onClick={() => handleReveal(0)}
           >
-            {!isRevealed(0) && (
-              <div className="absolute inset-0 bg-black/60 rounded-[15px] z-20 pointer-events-none flex items-center justify-center">
-                 <div className="bg-white/10 rounded-full p-3 backdrop-blur-sm border border-white/20">
-                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                 </div>
-              </div>
-            )}
             <div className="bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full">
               <div className="content-stretch flex flex-col gap-[16px] h-[280px] items-center relative w-full pt-4">
                 <div className="relative w-full">
@@ -186,23 +195,16 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
                     </div>
                   </div>
                 </div>
-                <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">define the problem through affinity mapping, user research, user interview, and personas</p>
+                <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Identify compute bottlenecks, non-deterministic model failures, and self-adaptation requirements</p>
               </div>
             </div>
           </div>
 
           {/* IDEATE */}
           <div 
-            className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] h-[320px] w-full max-w-[280px] transition-all duration-500 cursor-pointer ${isRevealed(1) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
+            className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(168,85,247,0.4)] h-[320px] w-full max-w-[280px] transition-all duration-500 cursor-pointer ${isRevealed(1) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
             onClick={() => handleReveal(1)}
           >
-            {!isRevealed(1) && (
-              <div className="absolute inset-0 bg-black/60 rounded-[15px] z-20 pointer-events-none flex items-center justify-center">
-                 <div className="bg-white/10 rounded-full p-3 backdrop-blur-sm border border-white/20">
-                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                 </div>
-              </div>
-            )}
             <div className="bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full">
               <div className="content-stretch flex flex-col gap-[16px] h-[280px] items-center relative w-full pt-4">
                 <div className="relative w-full">
@@ -221,23 +223,16 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
                     </div>
                   </div>
                 </div>
-                <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Mind mapping, navigation and layout, visual style, Lo-Fi’s, brainstorming</p>
+                <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Architect recursive tool synthesis loops, sandboxed code execution, and tool registry memory</p>
               </div>
             </div>
           </div>
 
           {/* DESIGN */}
           <div 
-            className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] h-[320px] w-full max-w-[280px] transition-all duration-500 cursor-pointer ${isRevealed(2) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
+            className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(168,85,247,0.4)] h-[320px] w-full max-w-[280px] transition-all duration-500 cursor-pointer ${isRevealed(2) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
             onClick={() => handleReveal(2)}
           >
-            {!isRevealed(2) && (
-              <div className="absolute inset-0 bg-black/60 rounded-[15px] z-20 pointer-events-none flex items-center justify-center">
-                 <div className="bg-white/10 rounded-full p-3 backdrop-blur-sm border border-white/20">
-                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                 </div>
-              </div>
-            )}
             <div className="bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full">
               <div className="content-stretch flex flex-col gap-[16px] h-[280px] items-center relative w-full pt-4">
                 <div className="relative w-full">
@@ -256,20 +251,24 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
                     </div>
                   </div>
                 </div>
-                <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Mid-Fi’s, prototypes, wireframes, mockups, user testing, user feedback, and refinement</p>
+                <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Interface design for monitoring generated tools, token cost tracking, and execution feedback loops</p>
               </div>
             </div>
           </div>
         </div>
 
+        {/* SUMMARY QUOTE */}
         <div className="bg-transparent relative w-full">
           <div className="flex flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
             <div className="content-stretch flex items-center justify-center px-[40px] py-[10px] relative w-full">
-              <p className="font-['IBM_Plex_Mono',sans-serif] leading-[normal] not-italic relative shrink-0 text-[24px] text-white tracking-[0.96px] max-w-[708px] text-center">{`For PlanWise the most crucial step was the definition problem as the app is primarily focused on solving the shortcomings of the current webapps that exist for scheduling group events `}</p>
+              <p className="font-['IBM_Plex_Mono',sans-serif] leading-[normal] not-italic relative shrink-0 text-[24px] text-white tracking-[0.96px] max-w-[708px] text-center">
+                For Ouroboros, the core innovation lies in empowering LLMs to build their own persistent computational tools rather than guessing output text.
+              </p>
             </div>
           </div>
         </div>
 
+        {/* DEVELOPMENT PROCESS */}
         <div className="bg-transparent relative w-full mt-12">
           <div className="flex flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
             <div className="content-stretch flex items-start px-[40px] py-[10px] relative w-full">
@@ -295,15 +294,15 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
           <div className="content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[20px] items-center justify-center relative w-full px-4">
             {/* CONVERT */}
             <div 
-              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(0) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
+              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(0) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(168,85,247,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(0)}
             >
-              <div className={`content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] ${isDevRevealed(0) ? 'blur-none brightness-100' : 'blur-[2px] brightness-50'}`}>
+              <div className="content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)]">
                 <div className="content-stretch flex flex-col gap-[20px] items-center relative w-full pt-6">
                   <div className="relative w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[5px] relative size-full gap-2">
-                        <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[28px] text-center text-white tracking-[1.12px]">CONVERT</p>
+                        <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[28px] text-center text-white tracking-[1.12px]">FRAMEWORK</p>
                         <div className="relative size-[30px]">
                           <div className="absolute inset-[16.67%]">
                             <div className="absolute inset-[-6.12%]">
@@ -316,7 +315,7 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
                       </div>
                     </div>
                   </div>
-                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Define the necessary framework, front-end tools, backend architecture, to realize the design</p>
+                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Integrated Gemini API with SpoonOS agentic framework and custom Python tool generation engine</p>
                 </div>
               </div>
             </div>
@@ -331,10 +330,10 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
 
             {/* BACKEND */}
             <div 
-              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(1) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
+              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(1) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(168,85,247,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(1)}
             >
-              <div className={`content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] ${isDevRevealed(1) ? 'blur-none brightness-100' : 'blur-[2px] brightness-50'}`}>
+              <div className="content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)]">
                 <div className="content-stretch flex flex-col gap-[20px] items-center relative w-full pt-6">
                   <div className="relative w-full">
                     <div className="flex flex-row items-center justify-center size-full">
@@ -352,7 +351,7 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
                       </div>
                     </div>
                   </div>
-                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Bootstrap a basic backend, setting up API endpoints, database connections, and functionality of the product</p>
+                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Configured dynamic Python code evaluation, tool caching database, and stockfish chess engine hooks</p>
                 </div>
               </div>
             </div>
@@ -362,10 +361,10 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
           <div className="content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[20px] items-center justify-center relative w-full px-4">
             {/* FRONTEND */}
             <div 
-              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(2) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
+              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(2) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(168,85,247,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(2)}
             >
-              <div className={`content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] ${isDevRevealed(2) ? 'blur-none brightness-100' : 'blur-[2px] brightness-50'}`}>
+              <div className="content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)]">
                 <div className="content-stretch flex flex-col gap-[20px] items-center relative w-full pt-6">
                   <div className="relative w-full">
                     <div className="flex flex-row items-center justify-center size-full">
@@ -386,7 +385,7 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
                       </div>
                     </div>
                   </div>
-                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Build off backend to realize the frontend design using the right framework and tools, ideate and adapt the setup to achieve the goal</p>
+                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Designed real-time React dashboard with tool generation logs, execution status, and cost savings telemetry</p>
                 </div>
               </div>
             </div>
@@ -401,10 +400,10 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
 
             {/* TEST */}
             <div 
-              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(3) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
+              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(3) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(168,85,247,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(3)}
             >
-              <div className={`content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] ${isDevRevealed(3) ? 'blur-none brightness-100' : 'blur-[2px] brightness-50'}`}>
+              <div className="content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)]">
                 <div className="content-stretch flex flex-col gap-[20px] items-center relative w-full pt-6">
                   <div className="relative w-full">
                     <div className="flex flex-row items-center justify-center size-full">
@@ -422,7 +421,7 @@ export function Ouroboros({ onBack }: { onBack: () => void }) {
                       </div>
                     </div>
                   </div>
-                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Test the product to iron out any bug or error, refine the code, and ensure the stability of the product, then refine and improve based off feedback</p>
+                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Benchmarked against frontier LLMs across domain tasks to verify accuracy, execution speed, and token cost savings</p>
                 </div>
               </div>
             </div>

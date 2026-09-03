@@ -1,18 +1,13 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-
 import svgPaths from "./svg-lw7r9sbh42";
 import backSvgPaths from "../../../imports/svg-6x7i7gg00i";
 
-import imgFrame4 from "../../../assets/planwise/3bae832acecc27eba42a751e2323a0ec995662f9.png";
-import imgImage15 from "../../../assets/planwise/866b2bb0d815e015d62c6f372c869abe06b1b33c.png";
-import imgImage26 from "../../../assets/planwise/0aa0820a07f48698d9754f42eabac3bd013844db.png";
-import imgImage27 from "../../../assets/planwise/63ab5154e3f6ccf09ca30971d3475493d7ef4a1f.png";
-import imgImage16 from "../../../assets/planwise/d434f57587bc5db10671cc4fd5de71a9b6512455.png";
-import imgUnsplashIm7LZjxeLhg from "../../../assets/planwise/a0231aae45ed31c2c5873645d3f1d6397f658bc6.png";
-import imgUnsplashODkYSvidB4 from "../../../assets/planwise/87a851b3b6d17a0df7b3becd752cf7cb5ae8be73.png";
-import planwiseCalendar from "../../../assets/planwise/planwise-calendar.png";
+import reactIcon from "../../../assets/866b2bb0d815e015d62c6f372c869abe06b1b33c.png";
+import tsIcon from "../../../assets/5c8cd8082fc863b5c16f485b27bafeeac681c54a.png";
+
 import pomoHero from "../../../assets/1524cd9fa5bebf0365746caced0bd3e3ee47e890.png";
+import pomoTimerProblem from "../../../assets/pomo/pomo_timer_problem.jpg";
+import pomoCottagecoreHouse from "../../../assets/pomo/pomo_cottagecore_house.jpg";
 
 export function PomoTime({ onBack }: { onBack: () => void }) {
   const [isBackHovered, setIsBackHovered] = useState(false);
@@ -52,6 +47,7 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
         </button>
       </div>
 
+      {/* --- HERO SECTION --- */}
       <div className="content-stretch flex flex-col items-start justify-center overflow-clip relative w-full max-w-[1200px] mx-auto min-h-[752px]">
 
         {/* SVG Lines */}
@@ -72,25 +68,27 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
               <p className="font-['IBM_Plex_Mono',sans-serif] h-[131px] leading-[normal] not-italic relative shrink-0 text-[156px] text-white w-[225px] -mt-[10px]">02</p>
             </div>
 
-            <div className="content-stretch flex flex-col gap-[10px] h-[328px] items-start overflow-visible pb-[17px] pr-[23px] relative shrink-0 w-[479px]">
-              <p className="font-['JetBrains_Mono',sans-serif] font-normal h-[106px] leading-[normal] relative shrink-0 text-[40px] text-white w-[380px]">POMOTIME</p>
-              <p className="font-['JetBrains_Mono',sans-serif] font-normal h-[137px] leading-[normal] relative shrink-0 text-[20px] text-white w-[380px]">For aesthetic and efficient studying. A beautiful Pomodoro timer application designed to enhance productivity and focus during study sessions.</p>
+            <div className="content-stretch flex flex-col gap-[10px] min-h-[328px] items-start overflow-visible pb-[17px] pr-[23px] relative shrink-0 w-[479px]">
+              <p className="font-['JetBrains_Mono',sans-serif] font-normal h-[76px] leading-[normal] relative shrink-0 text-[40px] text-white w-[380px]">POMOTIME</p>
+              <p className="font-['JetBrains_Mono',sans-serif] font-normal min-h-[140px] leading-[normal] relative shrink-0 text-[18px] text-white/90 w-[380px]">For aesthetic and efficient studying. Created as one of my first web projects to bring a cozy, atmospheric touch to productive study sessions.</p>
 
-              <div className="content-stretch flex gap-[14px] h-[71px] items-center overflow-clip pr-[11px] py-[19px] relative shrink-0 w-[356px]">
-                <div className="relative shrink-0 size-[52px]" data-name="image 15">
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <img alt="" className="absolute h-[100.29%] left-[-24.56%] max-w-none top-[-0.15%] w-[152.63%]" src={imgImage15} />
-                  </div>
+              {/* Stack Icons & GitHub Link */}
+              <div className="content-stretch flex items-center gap-[14px] h-[71px] relative shrink-0 w-full mt-2">
+                <div className="relative shrink-0 size-[52px]" title="React">
+                  <img alt="React" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={reactIcon} />
                 </div>
-                <div className="relative shrink-0 size-[52px]" data-name="image 26">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage26} />
+                <div className="relative shrink-0 size-[52px]" title="TypeScript">
+                  <img alt="TypeScript" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={tsIcon} />
                 </div>
-                <div className="relative shrink-0 size-[52px]" data-name="image 27">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage27} />
-                </div>
-                <div className="relative shrink-0 size-[52px]" data-name="image 16">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage16} />
-                </div>
+
+                <a
+                  href="https://github.com/pedroM720/PomoApp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-500 text-white font-['JetBrains_Mono',sans-serif] font-bold px-4 py-2.5 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(217,119,6,0.4)] hover:shadow-[0_0_30px_rgba(217,119,6,0.7)] hover:scale-105 text-sm ml-2"
+                >
+                  <span>GITHUB REPO ↗</span>
+                </a>
               </div>
             </div>
           </div>
@@ -101,7 +99,10 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
         </div>
       </div>
 
+      {/* --- CONTENT DETAILS --- */}
       <div className="bg-black content-stretch flex flex-col gap-[48px] items-center overflow-clip pb-[32px] pt-[64px] relative w-full">
+        
+        {/* PROBLEM STATEMENT */}
         <div className="bg-transparent relative w-full">
           <div className="flex flex-col lg:flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
             <div className="content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[118px] items-center lg:items-start px-[40px] py-[40px] lg:py-[10px] relative w-full">
@@ -114,15 +115,18 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
                   <p className="font-['IBM_Plex_Mono',sans-serif] not-italic relative z-10 shrink-0 text-[52px] tracking-[2.08px] transition-colors duration-300">PR0BLEM STATEMENT</p>
                   <span className="absolute bottom-[-4px] left-0 right-0 border-b-[4px] border-dashed border-white transition-opacity duration-300 pointer-events-none z-10" style={getSectionHoverStyle('problem')} />
                 </div>
-                <p className="font-['JetBrains_Mono',sans-serif] font-normal relative shrink-0 text-[20px] tracking-[0.8px]">{`Apps like When2Meet work but leave a lot to be desired like g-cal integration, UI upgrades, and easier schedule planning `}</p>
+                <p className="font-['JetBrains_Mono',sans-serif] font-normal relative shrink-0 text-[18px] tracking-[0.8px] text-white/90">
+                  Most online study timers feel rigid and sterile. I wanted a personal study companion that felt comforting and aesthetic—capturing a woody, foresty cottagecore vibe with the scent of rainy moss, warm coffee, and owls hooting in the background.
+                </p>
               </div>
-              <div className="h-[403px] relative shadow-[0px_0px_25px_5px_rgba(225,216,216,0.4)] shrink-0 w-full max-w-[570px]">
-                <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full rounded-lg" src={imgUnsplashODkYSvidB4} />
+              <div className="relative shadow-[0px_0px_25px_5px_rgba(225,216,216,0.4)] shrink-0 w-full max-w-[570px] h-[380px] rounded-lg overflow-hidden bg-black">
+                <img alt="Boring Timer Problem" className="w-full h-full object-cover rounded-lg block" src={pomoTimerProblem} />
               </div>
             </div>
           </div>
         </div>
 
+        {/* SOLUTION */}
         <div className="bg-transparent relative w-full">
           <div className="flex flex-col lg:flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
             <div className="content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[118px] items-center lg:items-start px-[40px] py-[40px] lg:py-[10px] relative w-full">
@@ -135,15 +139,18 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
                   <p className="font-['IBM_Plex_Mono',sans-serif] not-italic relative z-10 shrink-0 text-[52px] tracking-[2.08px] transition-colors duration-300">S0LUTI0N</p>
                   <span className="absolute bottom-[-4px] left-0 right-0 border-b-[4px] border-dashed border-white transition-opacity duration-300 pointer-events-none z-10" style={getSectionHoverStyle('solution')} />
                 </div>
-                <p className="font-['JetBrains_Mono',sans-serif] font-normal relative shrink-0 text-[20px] tracking-[0.8px]">PomoTime is an app that makes planning group events easier by adding an automatic best time to meet for you, upgraded UI view, and g-cal integration</p>
+                <p className="font-['JetBrains_Mono',sans-serif] font-normal relative shrink-0 text-[18px] tracking-[0.8px] text-white/90">
+                  PomoTime pairs custom Pomodoro work/rest intervals with cozy ambient visuals and warm earthy aesthetics, transforming routine study sessions into an inviting, focused experience.
+                </p>
               </div>
-              <div className="h-[428px] relative shadow-[0px_0px_25px_5px_rgba(225,216,216,0.4)] shrink-0 w-full max-w-[570px]">
-                <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full rounded-lg" src={imgUnsplashODkYSvidB4} />
+              <div className="relative shadow-[0px_0px_25px_5px_rgba(225,216,216,0.4)] shrink-0 w-full max-w-[570px] h-[380px] rounded-lg overflow-hidden bg-black">
+                <img alt="Cottagecore House Solution" className="w-full h-full object-cover rounded-lg block" src={pomoCottagecoreHouse} />
               </div>
             </div>
           </div>
         </div>
 
+        {/* DESIGN PROCESS */}
         <div className="bg-transparent relative w-full">
           <div className="flex flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
             <div className="content-stretch flex items-start px-[40px] py-[10px] relative w-full">
@@ -159,19 +166,13 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
           </div>
         </div>
 
+        {/* PROCESS CARDS */}
         <div className="bg-transparent content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[70px] items-center justify-center overflow-clip py-[10px] relative w-full px-4 max-w-[1200px] mx-auto">
           {/* DEFINE */}
           <div 
             className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] h-[320px] w-full max-w-[280px] transition-all duration-500 cursor-pointer ${isRevealed(0) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
             onClick={() => handleReveal(0)}
           >
-            {!isRevealed(0) && (
-              <div className="absolute inset-0 bg-black/60 rounded-[15px] z-20 pointer-events-none flex items-center justify-center">
-                 <div className="bg-white/10 rounded-full p-3 backdrop-blur-sm border border-white/20">
-                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                 </div>
-              </div>
-            )}
             <div className="bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full">
               <div className="content-stretch flex flex-col gap-[16px] h-[280px] items-center relative w-full pt-4">
                 <div className="relative w-full">
@@ -186,7 +187,7 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
                     </div>
                   </div>
                 </div>
-                <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">define the problem through affinity mapping, user research, user interview, and personas</p>
+                <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Identify personal study habits, aesthetic preferences, and comforting cottagecore atmosphere elements</p>
               </div>
             </div>
           </div>
@@ -196,13 +197,6 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
             className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] h-[320px] w-full max-w-[280px] transition-all duration-500 cursor-pointer ${isRevealed(1) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
             onClick={() => handleReveal(1)}
           >
-            {!isRevealed(1) && (
-              <div className="absolute inset-0 bg-black/60 rounded-[15px] z-20 pointer-events-none flex items-center justify-center">
-                 <div className="bg-white/10 rounded-full p-3 backdrop-blur-sm border border-white/20">
-                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                 </div>
-              </div>
-            )}
             <div className="bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full">
               <div className="content-stretch flex flex-col gap-[16px] h-[280px] items-center relative w-full pt-4">
                 <div className="relative w-full">
@@ -221,7 +215,7 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
                     </div>
                   </div>
                 </div>
-                <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Mind mapping, navigation and layout, visual style, Lo-Fi’s, brainstorming</p>
+                <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Ideate warm earthy color schemes, foresty tones, and soothing timer interface layouts</p>
               </div>
             </div>
           </div>
@@ -231,13 +225,6 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
             className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] h-[320px] w-full max-w-[280px] transition-all duration-500 cursor-pointer ${isRevealed(2) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
             onClick={() => handleReveal(2)}
           >
-            {!isRevealed(2) && (
-              <div className="absolute inset-0 bg-black/60 rounded-[15px] z-20 pointer-events-none flex items-center justify-center">
-                 <div className="bg-white/10 rounded-full p-3 backdrop-blur-sm border border-white/20">
-                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                 </div>
-              </div>
-            )}
             <div className="bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full">
               <div className="content-stretch flex flex-col gap-[16px] h-[280px] items-center relative w-full pt-4">
                 <div className="relative w-full">
@@ -256,20 +243,24 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
                     </div>
                   </div>
                 </div>
-                <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Mid-Fi’s, prototypes, wireframes, mockups, user testing, user feedback, and refinement</p>
+                <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Hone frontend UI/UX design skills while translating cozy aesthetic ideas into interactive React components</p>
               </div>
             </div>
           </div>
         </div>
 
+        {/* SUMMARY QUOTE */}
         <div className="bg-transparent relative w-full">
           <div className="flex flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
             <div className="content-stretch flex items-center justify-center px-[40px] py-[10px] relative w-full">
-              <p className="font-['IBM_Plex_Mono',sans-serif] leading-[normal] not-italic relative shrink-0 text-[24px] text-white tracking-[0.96px] max-w-[708px] text-center">{`For PlanWise the most crucial step was the definition problem as the app is primarily focused on solving the shortcomings of the current webapps that exist for scheduling group events `}</p>
+              <p className="font-['IBM_Plex_Mono',sans-serif] leading-[normal] not-italic relative shrink-0 text-[24px] text-white tracking-[0.96px] max-w-[708px] text-center">
+                As one of my first web projects, PomoTime was my hands-on playground for mastering React, JavaScript state management, and aesthetic design.
+              </p>
             </div>
           </div>
         </div>
 
+        {/* DEVELOPMENT PROCESS */}
         <div className="bg-transparent relative w-full mt-12">
           <div className="flex flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
             <div className="content-stretch flex items-start px-[40px] py-[10px] relative w-full">
@@ -298,12 +289,12 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
               className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(0) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(0)}
             >
-              <div className={`content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] ${isDevRevealed(0) ? 'blur-none brightness-100' : 'blur-[2px] brightness-50'}`}>
+              <div className="content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)]">
                 <div className="content-stretch flex flex-col gap-[20px] items-center relative w-full pt-6">
                   <div className="relative w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[5px] relative size-full gap-2">
-                        <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[28px] text-center text-white tracking-[1.12px]">CONVERT</p>
+                        <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[28px] text-center text-white tracking-[1.12px]">LEARNING</p>
                         <div className="relative size-[30px]">
                           <div className="absolute inset-[16.67%]">
                             <div className="absolute inset-[-6.12%]">
@@ -316,7 +307,7 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
                       </div>
                     </div>
                   </div>
-                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Define the necessary framework, front-end tools, backend architecture, to realize the design</p>
+                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Learned core React component lifecycles, hooks, and JavaScript state management fundamentals</p>
                 </div>
               </div>
             </div>
@@ -329,17 +320,17 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
               </div>
             </div>
 
-            {/* BACKEND */}
+            {/* BACKEND / LOGIC */}
             <div 
               className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(1) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(1)}
             >
-              <div className={`content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] ${isDevRevealed(1) ? 'blur-none brightness-100' : 'blur-[2px] brightness-50'}`}>
+              <div className="content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)]">
                 <div className="content-stretch flex flex-col gap-[20px] items-center relative w-full pt-6">
                   <div className="relative w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[5px] relative size-full gap-2">
-                        <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[28px] text-center text-white tracking-[1.12px]">BACKEND</p>
+                        <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[28px] text-center text-white tracking-[1.12px]">LOGIC</p>
                         <div className="relative size-[30px]">
                           <div className="absolute inset-[16.67%_12.5%]">
                             <div className="absolute inset-[-6.12%_-5.44%]">
@@ -352,7 +343,7 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
                       </div>
                     </div>
                   </div>
-                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Bootstrap a basic backend, setting up API endpoints, database connections, and functionality of the product</p>
+                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Built custom timer interval countdown hooks and session switching logic</p>
                 </div>
               </div>
             </div>
@@ -365,12 +356,12 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
               className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(2) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(2)}
             >
-              <div className={`content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] ${isDevRevealed(2) ? 'blur-none brightness-100' : 'blur-[2px] brightness-50'}`}>
+              <div className="content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)]">
                 <div className="content-stretch flex flex-col gap-[20px] items-center relative w-full pt-6">
                   <div className="relative w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[5px] relative size-full gap-2">
-                        <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[28px] text-center text-white tracking-[1.12px]">FRONTEND</p>
+                        <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[28px] text-center text-white tracking-[1.12px]">DESIGN</p>
                         <div className="relative size-[30px]">
                           <div className="absolute inset-[9.62%_13.92%]">
                             <div className="absolute inset-[-4.95%_-5.54%]">
@@ -386,7 +377,7 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
                       </div>
                     </div>
                   </div>
-                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Build off backend to realize the frontend design using the right framework and tools, ideate and adapt the setup to achieve the goal</p>
+                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Honed design skills, crafting warm foresty color palettes and cozy cottagecore aesthetic details</p>
                 </div>
               </div>
             </div>
@@ -404,12 +395,12 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
               className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(3) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(255,255,255,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(3)}
             >
-              <div className={`content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] ${isDevRevealed(3) ? 'blur-none brightness-100' : 'blur-[2px] brightness-50'}`}>
+              <div className="content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)]">
                 <div className="content-stretch flex flex-col gap-[20px] items-center relative w-full pt-6">
                   <div className="relative w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[5px] relative size-full gap-2">
-                        <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[28px] text-center text-white tracking-[1.12px]">TEST</p>
+                        <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[28px] text-center text-white tracking-[1.12px]">REFINE</p>
                         <div className="relative size-[30px]">
                           <div className="absolute inset-[11.22%_9.05%_10.69%_9.06%]">
                             <div className="absolute inset-[-5.12%_-4.89%_-5.14%_-4.89%]">
@@ -422,7 +413,7 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
                       </div>
                     </div>
                   </div>
-                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Test the product to iron out any bug or error, refine the code, and ensure the stability of the product, then refine and improve based off feedback</p>
+                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Refined user experience and timing precision through personal daily study use</p>
                 </div>
               </div>
             </div>
