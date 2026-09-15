@@ -221,7 +221,7 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
       {/* Terminal Container */}
       {(stage !== 'boom') && (
         <motion.div
-          className="relative border border-white/20 p-10 bg-black/98 backdrop-blur-3xl min-w-[320px] sm:min-w-[700px] shadow-[0_0_120px_rgba(255,255,255,0.05)] overflow-hidden"
+          className="relative border border-white/20 p-5 sm:p-10 bg-black/98 backdrop-blur-3xl w-[92vw] max-w-[700px] shadow-[0_0_120px_rgba(255,255,255,0.05)] overflow-hidden"
           animate={{
             borderColor: (stage === 'wireframe' || stage === 'descrambling') ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.2)",
             boxShadow: (stage === 'wireframe' || stage === 'descrambling') ? "0 0 100px rgba(255,255,255,0.2)" : "0 0 20px rgba(255,255,255,0)"
@@ -237,7 +237,7 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
             <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.5)_50%)] bg-[length:100%_4px]" />
           </div>
 
-          <div className="font-mono text-white flex flex-col gap-8 min-h-[100px] relative z-10">
+          <div className="font-mono text-white flex flex-col gap-6 sm:gap-8 min-h-[100px] relative z-10">
             {stage === 'wireframe' ? (
               <div className="h-full flex items-center justify-center">
                 <div className="text-white/20 text-xs tracking-widest animate-pulse">SYSTEM_IDLE</div>
@@ -246,18 +246,18 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="flex flex-col gap-8"
+                className="flex flex-col gap-6 sm:gap-8"
               >
-                <div className="text-[22px] sm:text-[34px] flex flex-col gap-6">
+                <div className="text-[18px] sm:text-[34px] flex flex-col gap-4 sm:gap-6">
                   {/* Line 1: Welcome/Hex */}
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 flex-wrap">
                     <span className="text-emerald-500 font-bold">{">"}</span>
-                    <span className="tracking-[0.2em]">{displayText}</span>
+                    <span className="tracking-[0.15em] sm:tracking-[0.2em] break-all text-center sm:text-left">{displayText}</span>
                     {(stage === 'descrambling' || (stage === 'wait-enter' && !document.hidden)) && (
                       <motion.span
                         animate={{ opacity: [1, 0] }}
                         transition={{ repeat: Infinity, duration: 0.8 }}
-                        className="w-4 h-12 bg-white"
+                        className="w-3 h-8 sm:w-4 sm:h-12 bg-white"
                       />
                     )}
                   </div>
@@ -265,12 +265,12 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
                   {/* Optional status line */}
                   {(stage === 'wait-enter' || stage === 'ascii') && (
                     <motion.div
-                      className="flex items-center gap-3"
+                      className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3"
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                     >
                       <span className="text-emerald-500 font-bold">{">"}</span>
-                      <span className="text-white/40 text-sm tracking-widest uppercase italic">
+                      <span className="text-white/40 text-xs sm:text-sm tracking-widest uppercase italic text-center sm:text-left">
                         {stage === 'wait-enter' ? '[ press enter or tap to initialize ]' : '[ initializing system... ]'}
                       </span>
                     </motion.div>
@@ -279,14 +279,14 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
 
                 {stage === 'ascii' && (
                   <motion.div
-                    className="flex flex-col gap-10 mt-6"
+                    className="flex flex-col gap-10 mt-4 sm:mt-6 overflow-x-auto"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div className="flex gap-4">
+                    <div className="flex gap-2 sm:gap-4 items-start">
                       <span className="text-emerald-500 font-bold mt-1">{">"}</span>
-                      <pre className="text-white leading-none overflow-x-auto text-[11px] sm:text-[18px] font-bold">
+                      <pre className="text-white leading-none overflow-x-auto text-[7px] sm:text-[18px] font-bold">
                         {PM_ASCII}
                       </pre>
                     </div>
@@ -296,7 +296,7 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
             )}
           </div>
 
-          <div className="absolute top-2 right-4 text-[9px] text-white/5 font-mono tracking-[0.3em]">
+          <div className="absolute top-2 right-4 text-[9px] text-white/5 font-mono tracking-[0.3em] hidden sm:block">
             KERNEL_X64_PRIVATE
           </div>
         </motion.div>

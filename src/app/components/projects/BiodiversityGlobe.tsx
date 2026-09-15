@@ -21,16 +21,16 @@ export function BiodiversityGlobe({ onBack }: { onBack: () => void }) {
   return (
     <div className="bg-black w-full min-h-screen relative overflow-y-auto">
       {/* --- BACK ARROW --- */}
-      <div className="fixed left-[16px] top-1/2 -translate-y-1/2 z-50">
+      <div className="fixed left-4 top-4 lg:top-1/2 lg:-translate-y-1/2 z-50">
         <button
           onClick={onBack}
           onMouseEnter={() => setIsBackHovered(true)}
           onMouseLeave={() => setIsBackHovered(false)}
-          className="transition-transform duration-300 bg-transparent border-none cursor-pointer p-0"
+          className="transition-transform duration-300 bg-black/80 lg:bg-transparent border border-white/20 lg:border-none rounded-full p-2 lg:p-0 backdrop-blur-md cursor-pointer flex items-center justify-center shadow-lg"
           style={{ transform: isBackHovered ? 'scale(1.1)' : 'scale(1)' }}
           aria-label="Back to projects"
         >
-          <svg className="w-[62px] h-[54px]" fill="none" preserveAspectRatio="none" viewBox="0 0 123.495 108.729">
+          <svg className="w-[36px] h-[30px] lg:w-[62px] lg:h-[54px]" fill="none" preserveAspectRatio="none" viewBox="0 0 123.495 108.729">
             <mask fill="white" id="path-back">
               <path d={backSvgPaths.p356c2e00} />
             </mask>
@@ -41,10 +41,10 @@ export function BiodiversityGlobe({ onBack }: { onBack: () => void }) {
       </div>
 
       {/* --- HERO SECTION --- */}
-      <div className="content-stretch flex flex-col items-start justify-center overflow-clip relative w-full max-w-[1200px] mx-auto min-h-[752px]">
+      <div className="content-stretch flex flex-col items-start justify-center overflow-clip relative w-full max-w-[1200px] mx-auto min-h-0 lg:min-h-[752px] pt-16 lg:pt-0">
 
         {/* SVG Lines */}
-        <div className="absolute left-[30px] top-[249px] h-[272px] w-[415px] pointer-events-none z-0">
+        <div className="hidden lg:block absolute left-[30px] top-[249px] h-[272px] w-[415px] pointer-events-none z-0">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 416 273.028">
             <g id="Group 1">
               <g id="Union">
@@ -56,21 +56,21 @@ export function BiodiversityGlobe({ onBack }: { onBack: () => void }) {
         </div>
 
         <div className="flex flex-col lg:flex-row items-center justify-between w-full relative z-10">
-          <div className="content-stretch flex flex-col gap-[16px] h-[752px] items-start pt-[139px] ml-0 mt-0 relative shrink-0 w-[479px] pl-[40px]">
-            <div className="content-stretch flex h-[110px] items-start overflow-clip pr-[23px] relative shrink-0 w-[418px]">
-              <p className="font-['IBM_Plex_Mono',sans-serif] h-[131px] leading-[normal] not-italic relative shrink-0 text-[156px] text-white w-[225px] -mt-[10px]">03</p>
+          <div className="content-stretch flex flex-col gap-[16px] h-auto lg:h-[752px] items-start pt-4 lg:pt-[139px] ml-0 mt-0 relative shrink-0 w-full lg:w-[479px] px-6 lg:pl-[40px] lg:pr-0">
+            <div className="content-stretch flex h-auto lg:h-[110px] items-start overflow-clip pr-0 lg:pr-[23px] relative shrink-0 w-auto">
+              <p className="font-['IBM_Plex_Mono',sans-serif] leading-[normal] not-italic relative shrink-0 text-[72px] sm:text-[100px] lg:text-[156px] text-white -mt-[10px]">03</p>
             </div>
 
-            <div className="content-stretch flex flex-col gap-[10px] min-h-[328px] items-start overflow-visible pb-[17px] pr-[23px] relative shrink-0 w-[479px]">
-              <p className="font-['JetBrains_Mono',sans-serif] font-normal h-[106px] leading-[normal] relative shrink-0 text-[40px] text-white w-[380px]">BIODIVERSITY GLOBE</p>
-              <p className="font-['JetBrains_Mono',sans-serif] font-normal min-h-[137px] leading-[normal] relative shrink-0 text-[20px] text-white w-[380px]">An interactive exploration of human evolutionary adaptation through planetary data and biological narratives.</p>
+            <div className="content-stretch flex flex-col gap-[10px] min-h-0 lg:h-[328px] items-start overflow-visible pb-[17px] pr-0 lg:pr-[23px] relative shrink-0 w-full lg:w-[479px]">
+              <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative shrink-0 text-[28px] sm:text-[40px] text-white w-full lg:w-[380px]">BIODIVERSITY GLOBE</p>
+              <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative shrink-0 text-[16px] sm:text-[20px] text-white/90 w-full lg:w-[380px]">An interactive exploration of human evolutionary adaptation through planetary data and biological narratives.</p>
 
               {/* Stack Icons & Live Link Button */}
-              <div className="content-stretch flex items-center gap-[14px] h-[71px] relative shrink-0 w-full mt-2">
-                <div className="relative shrink-0 size-[52px]" title="React">
+              <div className="content-stretch flex items-center gap-[14px] h-[71px] relative shrink-0 w-full mt-2 flex-wrap">
+                <div className="relative shrink-0 size-[42px] sm:size-[52px]" title="React">
                   <img alt="React" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={reactIcon} />
                 </div>
-                <div className="relative shrink-0 size-[52px]" title="TypeScript">
+                <div className="relative shrink-0 size-[42px] sm:size-[52px]" title="TypeScript">
                   <img alt="TypeScript" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={tsIcon} />
                 </div>
 
@@ -78,7 +78,7 @@ export function BiodiversityGlobe({ onBack }: { onBack: () => void }) {
                   href="https://pedro-martinez-ib35-creative.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-black font-['JetBrains_Mono',sans-serif] font-bold px-4 py-2.5 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:shadow-[0_0_30px_rgba(34,211,238,0.7)] hover:scale-105 text-sm ml-2"
+                  className="inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-black font-['JetBrains_Mono',sans-serif] font-bold px-4 py-2.5 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:shadow-[0_0_30px_rgba(34,211,238,0.7)] hover:scale-105 text-sm ml-0 sm:ml-2"
                 >
                   <span>EXPLORE THE BIOSPHERE ↗</span>
                 </a>
@@ -86,29 +86,29 @@ export function BiodiversityGlobe({ onBack }: { onBack: () => void }) {
             </div>
           </div>
 
-          <div className="relative shrink-0 w-full lg:w-1/2 flex justify-end pr-[40px]">
+          <div className="relative shrink-0 w-full lg:w-1/2 flex justify-center lg:justify-end px-4 lg:pr-[40px] mt-6 lg:mt-0">
             <img src={bioTitleCard} alt="Biodiversity Globe Landing" className="w-full max-w-[700px] h-auto object-contain rounded-[15px] shadow-[0px_0px_30px_5px_rgba(34,211,238,0.3)] border border-cyan-500/30" />
           </div>
         </div>
       </div>
 
       {/* --- CONTENT DETAILS --- */}
-      <div className="bg-black content-stretch flex flex-col gap-[48px] items-center overflow-clip pb-[64px] pt-[64px] relative w-full">
+      <div className="bg-black content-stretch flex flex-col gap-[36px] lg:gap-[48px] items-center overflow-clip pb-[64px] pt-[36px] lg:pt-[64px] relative w-full">
         
         {/* OVERVIEW */}
         <div className="bg-transparent relative w-full">
           <div className="flex flex-col lg:flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
-            <div className="content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[118px] items-center lg:items-start px-[40px] py-[40px] lg:py-[10px] relative w-full">
-              <div className="content-stretch flex flex-col gap-[32px] items-start leading-[normal] relative shrink-0 text-white w-full max-w-[437px]">
+            <div className="content-stretch flex flex-col lg:flex-row gap-6 lg:gap-[118px] items-center lg:items-start px-6 lg:px-[40px] py-4 lg:py-[10px] relative w-full">
+              <div className="content-stretch flex flex-col gap-[20px] lg:gap-[32px] items-start leading-[normal] relative shrink-0 text-white w-full lg:max-w-[437px]">
                 <div 
                   className="relative cursor-default inline-block"
                   onMouseEnter={() => setHoveredSection('overview')}
                   onMouseLeave={() => setHoveredSection(null)}
                 >
-                  <p className="font-['IBM_Plex_Mono',sans-serif] not-italic relative z-10 shrink-0 text-[52px] tracking-[2.08px] transition-colors duration-300">OVERVIEW</p>
+                  <p className="font-['IBM_Plex_Mono',sans-serif] not-italic relative z-10 shrink-0 text-[28px] sm:text-[38px] lg:text-[52px] tracking-[1px] lg:tracking-[2.08px] transition-colors duration-300">OVERVIEW</p>
                   <span className="absolute bottom-[-4px] left-0 right-0 border-b-[4px] border-dashed border-white transition-opacity duration-300 pointer-events-none z-10" style={getSectionHoverStyle('overview')} />
                 </div>
-                <p className="font-['JetBrains_Mono',sans-serif] font-normal relative shrink-0 text-[20px] tracking-[0.8px] text-white/90">
+                <p className="font-['JetBrains_Mono',sans-serif] font-normal relative shrink-0 text-[16px] sm:text-[20px] tracking-[0.8px] text-white/90">
                   Human evolutionary adaptation occurs across global geographic clines. Flat 2D maps obscure spatial relationships and biological narratives. Biodiversity Globe renders global genetic, environmental, and phenotypic datasets on an interactive 3D Earth.
                 </p>
               </div>
@@ -122,18 +122,18 @@ export function BiodiversityGlobe({ onBack }: { onBack: () => void }) {
         {/* NAVIGATION & INTERACTION */}
         <div className="bg-transparent relative w-full">
           <div className="flex flex-col lg:flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
-            <div className="content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[118px] items-center lg:items-start px-[40px] py-[40px] lg:py-[10px] relative w-full">
-              <div className="content-stretch flex flex-col gap-[24px] items-start leading-[normal] relative shrink-0 text-white w-full max-w-[437px]">
+            <div className="content-stretch flex flex-col lg:flex-row gap-6 lg:gap-[118px] items-center lg:items-start px-6 lg:px-[40px] py-4 lg:py-[10px] relative w-full">
+              <div className="content-stretch flex flex-col gap-[20px] lg:gap-[24px] items-start leading-[normal] relative shrink-0 text-white w-full lg:max-w-[437px]">
                 <div 
                   className="relative cursor-default inline-block"
                   onMouseEnter={() => setHoveredSection('components')}
                   onMouseLeave={() => setHoveredSection(null)}
                 >
-                  <p className="font-['IBM_Plex_Mono',sans-serif] not-italic relative z-10 shrink-0 text-[48px] tracking-[2.08px] transition-colors duration-300">NAVIGATION & INTERACTION</p>
+                  <p className="font-['IBM_Plex_Mono',sans-serif] not-italic relative z-10 shrink-0 text-[26px] sm:text-[36px] lg:text-[48px] tracking-[1px] lg:tracking-[2.08px] transition-colors duration-300">NAVIGATION & INTERACTION</p>
                   <span className="absolute bottom-[-4px] left-0 right-0 border-b-[4px] border-dashed border-white transition-opacity duration-300 pointer-events-none z-10" style={getSectionHoverStyle('components')} />
                 </div>
                 
-                <ul className="font-['JetBrains_Mono',sans-serif] text-[16px] tracking-[0.6px] space-y-4 text-white/90">
+                <ul className="font-['JetBrains_Mono',sans-serif] text-[15px] sm:text-[16px] tracking-[0.6px] space-y-4 text-white/90 w-full">
                   <li className="bg-white/5 p-3 rounded-lg border border-white/10">
                     <strong className="text-cyan-300 font-bold block mb-1">Explore the Biosphere</strong>
                     Press the button on the landing page to enter the interactive 3D biosphere canvas.
@@ -167,47 +167,47 @@ export function BiodiversityGlobe({ onBack }: { onBack: () => void }) {
 
         {/* ANALYZED DATASETS */}
         <div className="bg-transparent relative w-full">
-          <div className="flex flex-col items-center overflow-clip w-full max-w-[1200px] mx-auto px-[40px]">
+          <div className="flex flex-col items-center overflow-clip w-full max-w-[1200px] mx-auto px-6 lg:px-[40px]">
             <div 
-              className="relative cursor-default inline-block mb-8 text-center"
+              className="relative cursor-default inline-block mb-6 lg:mb-8 text-center"
               onMouseEnter={() => setHoveredSection('datasets')}
               onMouseLeave={() => setHoveredSection(null)}
             >
-              <p className="font-['IBM_Plex_Mono',sans-serif] not-italic relative z-10 shrink-0 text-[52px] text-white tracking-[2.08px]">EVOLUTIONARY TRAIT DATASETS</p>
+              <p className="font-['IBM_Plex_Mono',sans-serif] not-italic relative z-10 shrink-0 text-[26px] sm:text-[38px] lg:text-[52px] text-white tracking-[1px] lg:tracking-[2.08px]">EVOLUTIONARY TRAIT DATASETS</p>
               <span className="absolute bottom-[-4px] left-0 right-0 border-b-[4px] border-dashed border-white transition-opacity duration-300 pointer-events-none z-10" style={getSectionHoverStyle('datasets')} />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-              <div className="bg-gradient-to-b from-cyan-950/40 to-black p-6 rounded-xl border border-cyan-500/30">
-                <h3 className="font-['IBM_Plex_Mono',sans-serif] text-cyan-300 text-xl font-bold mb-2">Skin Pigmentation</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 w-full">
+              <div className="bg-gradient-to-b from-cyan-950/40 to-black p-5 sm:p-6 rounded-xl border border-cyan-500/30">
+                <h3 className="font-['IBM_Plex_Mono',sans-serif] text-cyan-300 text-lg sm:text-xl font-bold mb-2">Skin Pigmentation</h3>
                 <p className="font-['JetBrains_Mono',sans-serif] text-sm text-white/80">
                   Analyzes UV radiation intensity clines and Vitamin D3 synthesis trade-offs across latitudes.
                 </p>
               </div>
 
-              <div className="bg-gradient-to-b from-cyan-950/40 to-black p-6 rounded-xl border border-cyan-500/30">
-                <h3 className="font-['IBM_Plex_Mono',sans-serif] text-cyan-300 text-xl font-bold mb-2">Lactase Persistence</h3>
+              <div className="bg-gradient-to-b from-cyan-950/40 to-black p-5 sm:p-6 rounded-xl border border-cyan-500/30">
+                <h3 className="font-['IBM_Plex_Mono',sans-serif] text-cyan-300 text-lg sm:text-xl font-bold mb-2">Lactase Persistence</h3>
                 <p className="font-['JetBrains_Mono',sans-serif] text-sm text-white/80">
                   Tracks pastoralist historical origins and cultural-historical co-evolution of dairy farming.
                 </p>
               </div>
 
-              <div className="bg-gradient-to-b from-cyan-950/40 to-black p-6 rounded-xl border border-cyan-500/30">
-                <h3 className="font-['IBM_Plex_Mono',sans-serif] text-cyan-300 text-xl font-bold mb-2">Altitude Adaptation</h3>
+              <div className="bg-gradient-to-b from-cyan-950/40 to-black p-5 sm:p-6 rounded-xl border border-cyan-500/30">
+                <h3 className="font-['IBM_Plex_Mono',sans-serif] text-cyan-300 text-lg sm:text-xl font-bold mb-2">Altitude Adaptation</h3>
                 <p className="font-['JetBrains_Mono',sans-serif] text-sm text-white/80">
                   Displays hypoxia survival mechanisms in high-altitude populations (Tibetan Plateau, Andes, Ethiopian Highlands).
                 </p>
               </div>
 
-              <div className="bg-gradient-to-b from-cyan-950/40 to-black p-6 rounded-xl border border-cyan-500/30">
-                <h3 className="font-['IBM_Plex_Mono',sans-serif] text-cyan-300 text-xl font-bold mb-2">Malaria Prevalence</h3>
+              <div className="bg-gradient-to-b from-cyan-950/40 to-black p-5 sm:p-6 rounded-xl border border-cyan-500/30">
+                <h3 className="font-['IBM_Plex_Mono',sans-serif] text-cyan-300 text-lg sm:text-xl font-bold mb-2">Malaria Prevalence</h3>
                 <p className="font-['JetBrains_Mono',sans-serif] text-sm text-white/80">
                   Maps geographic distribution of Plasmodium falciparum malaria selective pressure.
                 </p>
               </div>
 
-              <div className="bg-gradient-to-b from-cyan-950/40 to-black p-6 rounded-xl border border-cyan-500/30 col-span-1 md:col-span-2">
-                <h3 className="font-['IBM_Plex_Mono',sans-serif] text-cyan-300 text-xl font-bold mb-2">Sickle Cell (HbS)</h3>
+              <div className="bg-gradient-to-b from-cyan-950/40 to-black p-5 sm:p-6 rounded-xl border border-cyan-500/30 col-span-1 md:col-span-2">
+                <h3 className="font-['IBM_Plex_Mono',sans-serif] text-cyan-300 text-lg sm:text-xl font-bold mb-2">Sickle Cell (HbS)</h3>
                 <p className="font-['JetBrains_Mono',sans-serif] text-sm text-white/80">
                   Illustrates balancing selection and heterozygote advantage against malaria infection.
                 </p>

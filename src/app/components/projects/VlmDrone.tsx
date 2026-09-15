@@ -27,7 +27,7 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
   return (
     <div className="bg-black w-full min-h-screen relative overflow-y-auto">
       {/* --- BACK ARROW --- */}
-      <div className="fixed left-[16px] top-1/2 -translate-y-1/2 z-50">
+      <div className="fixed left-4 top-4 lg:top-1/2 lg:-translate-y-1/2 z-50">
         <button
           onClick={onBack}
           onMouseEnter={() => setIsBackHovered(true)}
@@ -47,10 +47,10 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
       </div>
 
       {/* --- HERO SECTION --- */}
-      <div className="content-stretch flex flex-col items-start justify-center overflow-clip relative w-full max-w-[1200px] mx-auto min-h-[752px]">
+      <div className="content-stretch flex flex-col items-start justify-center overflow-clip relative w-full max-w-[1200px] mx-auto min-h-0 lg:min-h-[752px]">
 
         {/* SVG Lines */}
-        <div className="absolute left-[30px] top-[249px] h-[272px] w-[415px] pointer-events-none z-0">
+        <div className="absolute left-[30px] top-[249px] h-[272px] w-[415px] pointer-events-none z-0 hidden lg:block">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 416 273.028">
             <g id="Group 1">
               <g id="Union">
@@ -62,17 +62,17 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
         </div>
 
         <div className="flex flex-col lg:flex-row items-center justify-between w-full relative z-10">
-          <div className="content-stretch flex flex-col gap-[16px] h-[752px] items-start pt-[139px] ml-0 mt-0 relative shrink-0 w-[479px] pl-[40px]">
-            <div className="content-stretch flex h-[110px] items-start overflow-clip pr-[23px] relative shrink-0 w-[418px]">
-              <p className="font-['IBM_Plex_Mono',sans-serif] h-[131px] leading-[normal] not-italic relative shrink-0 text-[156px] text-white w-[225px] -mt-[10px]">05</p>
+          <div className="content-stretch flex flex-col gap-[16px] h-auto lg:h-[752px] items-center lg:items-start pt-16 lg:pt-[139px] ml-0 mt-0 relative shrink-0 w-full lg:w-[479px] px-4 lg:pl-[40px] lg:pr-0">
+            <div className="content-stretch flex h-auto lg:h-[110px] items-center lg:items-start overflow-clip pr-0 lg:pr-[23px] relative shrink-0 w-full lg:w-[418px] justify-center lg:justify-start">
+              <p className="font-['IBM_Plex_Mono',sans-serif] h-auto lg:h-[131px] leading-[normal] not-italic relative shrink-0 text-[80px] sm:text-[120px] lg:text-[156px] text-white w-auto lg:w-[225px] -mt-[10px]">05</p>
             </div>
 
-            <div className="content-stretch flex flex-col gap-[10px] min-h-[328px] items-start overflow-visible pb-[17px] pr-[23px] relative shrink-0 w-[479px]">
-              <p className="font-['JetBrains_Mono',sans-serif] font-normal h-[76px] leading-[normal] relative shrink-0 text-[40px] text-white w-[380px]">PLAMO VLM</p>
-              <p className="font-['JetBrains_Mono',sans-serif] font-normal min-h-[140px] leading-[normal] relative shrink-0 text-[18px] text-white/90 w-[380px]">Edge AI visual language model for drones. Configured open-weight PLaMo-2.1-2B-VL, built a decoupled web interface, and optimized inference on NVIDIA Jetson AGX Orin for live demo real-time target detection.</p>
+            <div className="content-stretch flex flex-col gap-[10px] min-h-0 lg:min-h-[328px] items-center lg:items-start overflow-visible pb-[17px] pr-0 lg:pr-[23px] relative shrink-0 w-full lg:w-[479px] text-center lg:text-left">
+              <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative shrink-0 text-[28px] sm:text-[38px] lg:text-[40px] text-white w-full lg:w-[380px] text-center lg:text-left">PLAMO VLM</p>
+              <p className="font-['JetBrains_Mono',sans-serif] font-normal min-h-0 lg:min-h-[140px] leading-[normal] relative shrink-0 text-[14px] sm:text-[16px] lg:text-[18px] text-white/90 w-full lg:w-[380px] text-center lg:text-left">Edge AI visual language model for drones. Configured open-weight PLaMo-2.1-2B-VL, built a decoupled web interface, and optimized inference on NVIDIA Jetson AGX Orin for live demo real-time target detection.</p>
 
               {/* Key Stack Tech Pills */}
-              <div className="flex flex-wrap gap-2 max-w-[420px] mt-1">
+              <div className="flex flex-wrap gap-2 max-w-[420px] mt-1 justify-center lg:justify-start">
                 {['PyTorch', 'Transformers', 'Mamba-SSM', 'Causal Conv1D', 'Nvidia JetPack', 'FastAPI'].map((tech) => (
                   <span key={tech} className="bg-sky-950/80 border border-sky-500/40 text-sky-300 font-['JetBrains_Mono',sans-serif] text-xs font-semibold px-2.5 py-1 rounded-md shadow-[0_0_10px_rgba(14,165,233,0.2)]">
                     {tech}
@@ -81,7 +81,7 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
               </div>
 
               {/* Stack Icons */}
-              <div className="content-stretch flex items-center gap-[14px] h-[60px] relative shrink-0 w-full mt-2">
+              <div className="content-stretch flex items-center justify-center lg:justify-start gap-[14px] h-[60px] relative shrink-0 w-full mt-2">
                 <div className="relative shrink-0 size-[48px]" title="React">
                   <img alt="React" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={reactIcon} />
                 </div>
@@ -95,7 +95,7 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
             </div>
           </div>
 
-          <div className="relative shrink-0 w-full lg:w-1/2 flex justify-end pr-[40px]">
+          <div className="relative shrink-0 w-full lg:w-1/2 flex justify-center lg:justify-end px-4 lg:px-0 lg:pr-[40px] mt-6 lg:mt-0">
             <img src={vlmHeroAdvantech} alt="Advantech PLaMo VLM Hero" className="w-full max-w-[700px] h-auto object-contain rounded-[15px] shadow-[0px_0px_30px_5px_rgba(14,165,233,0.3)] border border-sky-500/30" />
           </div>
         </div>
@@ -114,7 +114,7 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
                   onMouseEnter={() => setHoveredSection('problem')}
                   onMouseLeave={() => setHoveredSection(null)}
                 >
-                  <p className="font-['IBM_Plex_Mono',sans-serif] not-italic relative z-10 shrink-0 text-[52px] tracking-[2.08px] transition-colors duration-300">PR0BLEM STATEMENT</p>
+                  <p className="font-['IBM_Plex_Mono',sans-serif] not-italic relative z-10 shrink-0 text-[28px] sm:text-[38px] lg:text-[52px] tracking-[2.08px] transition-colors duration-300">PR0BLEM STATEMENT</p>
                   <span className="absolute bottom-[-4px] left-0 right-0 border-b-[4px] border-dashed border-white transition-opacity duration-300 pointer-events-none z-10" style={getSectionHoverStyle('problem')} />
                 </div>
                 <p className="font-['JetBrains_Mono',sans-serif] font-normal relative shrink-0 text-[18px] tracking-[0.8px] text-white/90">
@@ -138,7 +138,7 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
                   onMouseEnter={() => setHoveredSection('solution')}
                   onMouseLeave={() => setHoveredSection(null)}
                 >
-                  <p className="font-['IBM_Plex_Mono',sans-serif] not-italic relative z-10 shrink-0 text-[52px] tracking-[2.08px] transition-colors duration-300">S0LUTI0N</p>
+                  <p className="font-['IBM_Plex_Mono',sans-serif] not-italic relative z-10 shrink-0 text-[28px] sm:text-[38px] lg:text-[52px] tracking-[2.08px] transition-colors duration-300">S0LUTI0N</p>
                   <span className="absolute bottom-[-4px] left-0 right-0 border-b-[4px] border-dashed border-white transition-opacity duration-300 pointer-events-none z-10" style={getSectionHoverStyle('solution')} />
                 </div>
                 <p className="font-['JetBrains_Mono',sans-serif] font-normal relative shrink-0 text-[18px] tracking-[0.8px] text-white/90">
@@ -161,7 +161,7 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
                 onMouseEnter={() => setHoveredSection('design')}
                 onMouseLeave={() => setHoveredSection(null)}
               >
-                <p className="font-['IBM_Plex_Mono',sans-serif] leading-[normal] not-italic relative z-10 shrink-0 text-[52px] text-white tracking-[2.08px] transition-colors duration-300">DESIGN PR0CESS</p>
+                <p className="font-['IBM_Plex_Mono',sans-serif] leading-[normal] not-italic relative z-10 shrink-0 text-[28px] sm:text-[38px] lg:text-[52px] text-white tracking-[2.08px] transition-colors duration-300">DESIGN PR0CESS</p>
                 <span className="absolute bottom-[-4px] left-0 right-0 border-b-[4px] border-dashed border-white transition-opacity duration-300 pointer-events-none z-10" style={getSectionHoverStyle('design')} />
               </div>
             </div>
@@ -268,7 +268,7 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
             <div className="content-stretch flex items-start px-[40px] py-[10px] relative w-full">
               <div className="content-stretch flex items-start relative w-full">
                 <div 
-                  className="relative cursor-default inline-block font-['IBM_Plex_Mono',sans-serif] leading-[1.2] not-italic text-[52px] text-white tracking-[2.08px]"
+                  className="relative cursor-default inline-block font-['IBM_Plex_Mono',sans-serif] leading-[1.2] not-italic text-[28px] sm:text-[38px] lg:text-[52px] text-white tracking-[2.08px]"
                   onMouseEnter={() => setHoveredSection('development')}
                   onMouseLeave={() => setHoveredSection(null)}
                 >

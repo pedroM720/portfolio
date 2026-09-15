@@ -71,25 +71,25 @@ function ProjectCard({ project, position, onProjectClick, onPrev, onNext }: Proj
     switch (position) {
       case 'left':
         return {
-          transform: 'perspective(1200px) rotateY(15deg) scale(0.97)',
-          left: '36px',
+          transform: 'perspective(1200px) rotateY(15deg) scale(0.95)',
+          left: '5%',
           zIndex: 1,
-          opacity: 1
+          opacity: 0.3
         };
       case 'center':
         return {
           transform: 'perspective(1200px) rotateY(0deg) scale(1)',
           left: '50%',
-          marginLeft: '-196.5px',
+          transformOrigin: 'center center',
           zIndex: 10,
           opacity: 1
         };
       case 'right':
         return {
-          transform: 'perspective(1200px) rotateY(-15deg) scale(0.97)',
-          right: '36px',
+          transform: 'perspective(1200px) rotateY(-15deg) scale(0.95)',
+          right: '5%',
           zIndex: 1,
-          opacity: 1
+          opacity: 0.3
         };
       default:
         return {
@@ -103,13 +103,13 @@ function ProjectCard({ project, position, onProjectClick, onPrev, onNext }: Proj
   const renderIcon = () => {
     if (project.icon === 'calendar') {
       return (
-        <svg className="w-[89px] h-[89px]" fill="none" preserveAspectRatio="none" viewBox="0 0 89 89">
+        <svg className="w-[60px] h-[60px] md:w-[89px] md:h-[89px]" fill="none" preserveAspectRatio="none" viewBox="0 0 89 89">
           <path d={svgPaths.p2d62e000} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" />
         </svg>
       );
     } else if (project.icon === 'timer') {
       return (
-        <svg className="w-[91.104px] h-[91.104px]" fill="none" preserveAspectRatio="none" viewBox="0 0 91.104 91.104">
+        <svg className="w-[60px] h-[60px] md:w-[91.104px] md:h-[91.104px]" fill="none" preserveAspectRatio="none" viewBox="0 0 91.104 91.104">
           <g transform="translate(15.184, 12.638)">
             <path d={svgPaths.pe990a00} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" />
           </g>
@@ -117,20 +117,20 @@ function ProjectCard({ project, position, onProjectClick, onPrev, onNext }: Proj
       );
     } else if (project.icon === 'globe') {
       return (
-        <svg className="w-[89px] h-[89px]" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="1.5">
+        <svg className="w-[60px] h-[60px] md:w-[89px] md:h-[89px]" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="1.5">
           <circle cx="12" cy="12" r="10" />
           <path strokeLinecap="round" strokeLinejoin="round" d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
         </svg>
       );
     } else if (project.icon === 'ouroboros') {
       return (
-        <div className="w-[98.351px] h-[94.839px] relative rounded-[20px] overflow-hidden">
+        <div className="w-[65px] h-[63px] md:w-[98.351px] md:h-[94.839px] relative rounded-[16px] md:rounded-[20px] overflow-hidden">
           <img alt="" className="absolute h-[283.95%] left-[-19.37%] max-w-none top-[-36.85%] w-[356.78%]" src={ouroborosIcon} />
         </div>
       );
     } else if (project.icon === 'vlm') {
       return (
-        <svg className="w-[89px] h-[89px]" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="1.5">
+        <svg className="w-[60px] h-[60px] md:w-[89px] md:h-[89px]" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="1.5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
         </svg>
       );
@@ -146,7 +146,13 @@ function ProjectCard({ project, position, onProjectClick, onPrev, onNext }: Proj
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="absolute top-1/2 -translate-y-1/2 transition-all duration-700 ease-out cursor-pointer outline-none border-none bg-transparent p-0"
+      className={`absolute top-1/2 -translate-y-1/2 transition-all duration-700 ease-out cursor-pointer outline-none border-none bg-transparent p-0 ${
+        position === 'center'
+          ? '-translate-x-1/2'
+          : position === 'left'
+          ? 'hidden md:block md:translate-x-0'
+          : 'hidden md:block md:translate-x-0'
+      }`}
       style={getTransformStyle()}
     >
       {/* Luminous Glow for lateral cards */}
@@ -165,23 +171,27 @@ function ProjectCard({ project, position, onProjectClick, onPrev, onNext }: Proj
       )}
 
       <div
-        className={`w-[393px] h-[550px] rounded-[24px] p-6 flex flex-col items-center justify-center gap-6 shadow-[inset_0px_4px_4px_0px_rgba(103,202,255,0.5)] transition-all ${
+        className={`w-[88vw] max-w-[340px] md:w-[393px] h-[460px] md:h-[550px] rounded-[24px] p-5 md:p-6 flex flex-col items-center justify-center gap-4 md:gap-6 shadow-[inset_0px_4px_4px_0px_rgba(103,202,255,0.5)] transition-all ${
           position === 'center' ? 'hover:scale-105' : 'hover:scale-[0.98]'
         } ${
           isHovered && position !== 'center' ? 'border-2 border-white/50' : 'border border-transparent'
         }`}
         style={{ backgroundImage: project.gradient }}
       >
-        <div className="flex items-center gap-4 mt-2">
+        <div className="flex items-center gap-3 md:gap-4 mt-2">
           {renderIcon()}
-          <h2 className="font-['Orbitron',sans-serif] text-[36px] text-white leading-[1.2] whitespace-pre-line text-left">
+          <h2 className="font-['Orbitron',sans-serif] text-[26px] md:text-[36px] text-white leading-[1.2] whitespace-pre-line text-left">
             {project.name}
           </h2>
         </div>
         
-        <p className="font-['Exo_2',sans-serif] text-[36px] text-white leading-[1.2] text-center max-w-[340px]">
+        <p className="font-['Exo_2',sans-serif] text-[24px] md:text-[36px] text-white leading-[1.2] text-center max-w-[290px] md:max-w-[340px]">
           {project.description}
         </p>
+
+        <span className="md:hidden mt-2 font-['JetBrains_Mono',sans-serif] text-xs text-white/80 bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm border border-white/30">
+          Tap to view project ↗
+        </span>
       </div>
     </button>
   );
@@ -230,16 +240,16 @@ export function Projects({ onProjectClick }: { onProjectClick: (projectKey: Proj
 
   return (
     <motion.div 
-      className="h-full relative flex flex-col items-center justify-center px-8"
+      className="h-full relative flex flex-col items-center justify-center px-4 md:px-8 py-12 md:py-0"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.1 }}
       variants={containerVariants}
     >
-      <div className="relative h-[620px] w-full max-w-7xl mx-auto flex items-center justify-center">
+      <div className="relative h-[520px] md:h-[620px] w-full max-w-7xl mx-auto flex flex-col items-center justify-center">
 
         {/* Project Carousel */}
-        <motion.div variants={itemVariants} className="relative w-full h-full">
+        <motion.div variants={itemVariants} className="relative w-full h-full flex items-center justify-center">
           {projects.map((project) => (
             <ProjectCard
               key={project.id}
@@ -251,6 +261,27 @@ export function Projects({ onProjectClick }: { onProjectClick: (projectKey: Proj
             />
           ))}
         </motion.div>
+
+        {/* Mobile Navigation Controls */}
+        <div className="flex md:hidden items-center justify-center gap-6 mt-4 z-20">
+          <button
+            onClick={handlePrevious}
+            className="w-12 h-12 rounded-full border border-white/30 bg-black/60 text-white flex items-center justify-center text-xl font-bold backdrop-blur-md active:scale-95 shadow-lg"
+            aria-label="Previous Project"
+          >
+            ←
+          </button>
+          <span className="font-['JetBrains_Mono',sans-serif] text-sm text-white/70">
+            {currentIndex + 1} / {projects.length}
+          </span>
+          <button
+            onClick={handleNext}
+            className="w-12 h-12 rounded-full border border-white/30 bg-black/60 text-white flex items-center justify-center text-xl font-bold backdrop-blur-md active:scale-95 shadow-lg"
+            aria-label="Next Project"
+          >
+            →
+          </button>
+        </div>
       </div>
     </motion.div>
   );

@@ -59,10 +59,10 @@ export const Home = memo(({ onNavigate }: HomeProps) => {
   };
 
   return (
-    <div className="min-h-screen relative flex items-center justify-center pt-[69px]">
+    <div className="min-h-screen relative flex items-center justify-center pt-[60px] md:pt-[69px] px-4">
 
       <motion.div 
-        className="relative z-10 flex flex-col items-center gap-[50px] px-4"
+        className="relative z-10 flex flex-col items-center gap-[30px] md:gap-[50px] px-2 text-center"
         variants={containerVariants}
       >
         <motion.h1
@@ -73,7 +73,7 @@ export const Home = memo(({ onNavigate }: HomeProps) => {
             repeat: Infinity, 
             ease: "easeInOut" 
           }}
-          className="font-['Orbitron',sans-serif] text-[clamp(80px,15vw,200px)] tracking-[10px]"
+          className="font-['Orbitron',sans-serif] text-[clamp(44px,11vw,200px)] tracking-[4px] md:tracking-[10px] text-center whitespace-nowrap"
           style={{ textShadow: "2px 3px 4px rgba(255,255,255,0.5)" }}
         >
           Pedro M
@@ -88,20 +88,20 @@ export const Home = memo(({ onNavigate }: HomeProps) => {
             ease: "easeInOut",
             delay: 0.5
           }}
-          className="font-['Exo_2',sans-serif] text-[clamp(24px,4vw,36px)]"
+          className="font-['Exo_2',sans-serif] text-[clamp(18px,4vw,36px)] text-center text-white/90"
           style={{ textShadow: "0px 1px 3px rgba(104,104,104,0.5)" }}
         >
           Software Engineering
         </motion.p>
 
         <motion.div 
-          className="flex gap-[40px] mt-[44px] flex-wrap justify-center"
+          className="flex flex-col sm:flex-row gap-5 sm:gap-[40px] mt-4 sm:mt-[44px] items-center justify-center w-full"
           variants={itemVariants}
         >
           
           {/* PROJECTS BUTTON */}
           <button
-            className="relative border-2 border-white flex gap-[24px] items-center justify-center px-[20px] py-[8px] h-[60px] w-[220px] group transition-all duration-300 hover:bg-white/5"
+            className="relative border-2 border-white flex gap-[24px] items-center justify-center px-[20px] py-[8px] h-[54px] sm:h-[60px] w-full sm:w-[220px] max-w-[260px] group transition-all duration-300 hover:bg-white/5"
             onClick={() => onNavigate("projects")}
             onMouseEnter={() => setHoveredButton('projects')}
             onMouseLeave={() => setHoveredButton(null)}
@@ -113,18 +113,18 @@ export const Home = memo(({ onNavigate }: HomeProps) => {
             />
 
             <div className="relative z-10 rotate-180 transition-transform duration-300 group-hover:scale-110">
-              <svg className="w-[26px] h-[26px]" fill="none" viewBox="0 0 22.5167 19.5">
+              <svg className="w-[22px] h-[22px] sm:w-[26px] sm:h-[26px]" fill="none" viewBox="0 0 22.5167 19.5">
                 <path d={svgPaths.p198870} stroke="white" strokeWidth="2" />
               </svg>
             </div>
-            <span className="relative z-10 font-['Exo_2',sans-serif] text-[30px] text-white">
+            <span className="relative z-10 font-['Exo_2',sans-serif] text-[24px] sm:text-[30px] text-white">
               Projects
             </span>
           </button>
 
           {/* ABOUT ME BUTTON */}
           <button
-            className="relative border-2 border-white flex gap-[21px] items-center justify-center px-[12px] py-[10px] h-[60px] w-[220px] group transition-all duration-300 hover:bg-white/5"
+            className="relative border-2 border-white flex gap-[21px] items-center justify-center px-[12px] py-[10px] h-[54px] sm:h-[60px] w-full sm:w-[220px] max-w-[260px] group transition-all duration-300 hover:bg-white/5"
             onClick={() => onNavigate("about")}
             onMouseEnter={() => setHoveredButton('about')}
             onMouseLeave={() => setHoveredButton(null)}
@@ -135,13 +135,13 @@ export const Home = memo(({ onNavigate }: HomeProps) => {
               style={getGlowStyle('about')}
             />
 
-            <svg className="relative z-10 w-[17.161px] h-[23px] transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 19.1618 23.0281">
+            <svg className="relative z-10 w-[15px] h-[20px] sm:w-[17.161px] sm:h-[23px] transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 19.1618 23.0281">
               <g>
                 <path d={svgPaths.p2f3afc80} stroke="white" strokeWidth="2" />
                 <path d={svgPaths.p28b7c470} stroke="white" strokeWidth="2" />
               </g>
             </svg>
-            <span className="relative z-10 font-['Exo_2',sans-serif] text-[29px] text-white">
+            <span className="relative z-10 font-['Exo_2',sans-serif] text-[24px] sm:text-[29px] text-white">
               About Me
             </span>
           </button>
