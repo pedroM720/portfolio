@@ -50,27 +50,21 @@ export function PomoTime({ onBack }: { onBack: () => void }) {
       {/* --- HERO SECTION --- */}
       <div className="content-stretch flex flex-col items-start justify-center overflow-clip relative w-full max-w-[1200px] mx-auto min-h-0 lg:min-h-[752px] pt-16 lg:pt-0">
 
-        {/* SVG Lines */}
-        <div className="hidden lg:block absolute left-[30px] top-[249px] h-[272px] w-[415px] pointer-events-none z-0">
-          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 416 273.028">
-            <g id="Group 1">
-              <g id="Union">
-                <path d={svgPaths.pc941a00} fill="white" />
-                <path d={svgPaths.pe92bc00} fill="white" />
-              </g>
-            </g>
-          </svg>
-        </div>
-
         <div className="flex flex-col lg:flex-row items-center justify-between w-full relative z-10">
           <div className="content-stretch flex flex-col gap-[16px] h-auto lg:h-[752px] items-start pt-4 lg:pt-[139px] ml-0 mt-0 relative shrink-0 w-full lg:w-[479px] px-6 lg:pl-[40px] lg:pr-0">
             <div className="content-stretch flex h-auto lg:h-[110px] items-start overflow-clip pr-0 lg:pr-[23px] relative shrink-0 w-auto">
               <p className="font-['IBM_Plex_Mono',sans-serif] leading-[normal] not-italic relative shrink-0 text-[72px] sm:text-[100px] lg:text-[156px] text-white -mt-[10px]">02</p>
             </div>
 
+            {/* Top Divider Line (Desktop) */}
+            <div className="hidden lg:block w-[378px] h-[1px] bg-white my-1" />
+
             <div className="content-stretch flex flex-col gap-[10px] min-h-0 lg:h-[328px] items-start overflow-visible pb-[17px] pr-0 lg:pr-[23px] relative shrink-0 w-full lg:w-[479px]">
               <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative shrink-0 text-[28px] sm:text-[40px] text-white w-full lg:w-[380px]">POMOTIME</p>
               <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative shrink-0 text-[16px] sm:text-[18px] text-white/90 w-full lg:w-[380px]">For aesthetic and efficient studying. Created as one of my first web projects to bring a cozy, atmospheric touch to productive study sessions.</p>
+
+              {/* Bottom Divider Line (Desktop) - keeps icons cleanly UNDER the white bar */}
+              <div className="hidden lg:block w-[415px] h-[1px] bg-white my-2" />
 
               {/* Stack Icons & GitHub Link */}
               <div className="content-stretch flex items-center gap-[14px] h-[71px] relative shrink-0 w-full mt-2 flex-wrap">
