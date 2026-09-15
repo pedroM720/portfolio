@@ -182,7 +182,12 @@ export default function App() {
   const yContact = useTransform(scrollYProgress, [0.6, 1], [50, 0]);
 
   const handleScrollTo = (ref: React.RefObject<HTMLDivElement>) => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
+    if (currentProject) {
+      setCurrentProject(null);
+    }
+    setTimeout(() => {
+      ref.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 50);
   };
 
   const handleProjectClick = (project: ProjectPage) => {

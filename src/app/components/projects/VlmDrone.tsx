@@ -27,7 +27,7 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
   return (
     <div className="bg-black w-full min-h-screen relative overflow-y-auto">
       {/* --- BACK ARROW --- */}
-      <div className="fixed left-4 top-4 lg:top-1/2 lg:-translate-y-1/2 z-50">
+      <div className="fixed left-4 top-[65px] lg:top-1/2 lg:-translate-y-1/2 z-50">
         <button
           onClick={onBack}
           onMouseEnter={() => setIsBackHovered(true)}
@@ -36,7 +36,7 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
           style={{ transform: isBackHovered ? 'scale(1.1)' : 'scale(1)' }}
           aria-label="Back to projects"
         >
-          <svg className="w-[62px] h-[54px]" fill="none" preserveAspectRatio="none" viewBox="0 0 123.495 108.729">
+          <svg className="w-[42px] h-[36px] sm:w-[50px] sm:h-[44px] lg:w-[62px] lg:h-[54px]" fill="none" preserveAspectRatio="none" viewBox="0 0 123.495 108.729">
             <mask fill="white" id="path-back">
               <path d={backSvgPaths.p356c2e00} />
             </mask>
@@ -62,9 +62,6 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
               <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative shrink-0 text-[28px] sm:text-[38px] lg:text-[40px] text-white w-full lg:w-[380px] text-center lg:text-left">PLAMO VLM</p>
               <p className="font-['JetBrains_Mono',sans-serif] font-normal min-h-0 lg:min-h-[140px] leading-[normal] relative shrink-0 text-[14px] sm:text-[16px] lg:text-[18px] text-white/90 w-full lg:w-[380px] text-center lg:text-left">Edge AI visual language model for drones. Configured open-weight PLaMo-2.1-2B-VL, built a decoupled web interface, and optimized inference on NVIDIA Jetson AGX Orin for live demo real-time target detection.</p>
 
-              {/* Bottom Divider Line (Desktop) - keeps all pills and icons cleanly UNDER the white bar */}
-              <div className="hidden lg:block w-[415px] h-[1px] bg-white my-2" />
-
               {/* Key Stack Tech Pills */}
               <div className="flex flex-wrap gap-2 max-w-[420px] mt-1 justify-center lg:justify-start">
                 {['PyTorch', 'Transformers', 'Mamba-SSM', 'Causal Conv1D', 'Nvidia JetPack', 'FastAPI'].map((tech) => (
@@ -86,6 +83,9 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
                   <img alt="TypeScript" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={tsIcon} />
                 </div>
               </div>
+
+              {/* Bottom Divider Line (Desktop) - containing title, description, pills, and icons between top and bottom white bars */}
+              <div className="hidden lg:block w-[415px] h-[1px] bg-white mt-3 mb-1" />
             </div>
           </div>
 
@@ -166,16 +166,16 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
         <div className="bg-transparent content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[70px] items-center justify-center overflow-clip py-[10px] relative w-full px-4 max-w-[1200px] mx-auto">
           {/* DEFINE */}
           <div 
-            className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(14,165,233,0.4)] h-[320px] w-full max-w-[280px] transition-all duration-500 cursor-pointer ${isRevealed(0) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
+            className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(14,165,233,0.4)] h-full min-h-[300px] lg:h-[320px] w-full max-w-[320px] lg:max-w-[280px] flex flex-col overflow-hidden transition-all duration-500 cursor-pointer ${isRevealed(0) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
             onClick={() => handleReveal(0)}
           >
-            <div className="bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full">
-              <div className="content-stretch flex flex-col gap-[16px] h-[280px] items-center relative w-full pt-4">
+            <div className="bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] flex flex-col flex-1 items-center justify-between overflow-hidden rounded-[14px] w-full h-full p-4 sm:p-5">
+              <div className="flex flex-col gap-4 items-center justify-between relative w-full h-full my-auto">
                 <div className="relative w-full">
                   <div className="flex flex-row items-center justify-center size-full">
                     <div className="content-stretch flex items-center justify-center p-[10px] relative size-full gap-2">
-                      <p className="font-['JetBrains_Mono',sans-serif] font-normal h-[40px] leading-[normal] relative text-[36px] text-center text-white tracking-[1.44px]">DEFINE</p>
-                      <div className="h-[45px] relative w-[50px]">
+                      <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[28px] sm:text-[36px] text-center text-white tracking-[1.44px]">DEFINE</p>
+                      <div className="h-[35px] sm:h-[45px] relative w-[40px] sm:w-[50px]">
                         <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 65 59">
                           <path d={svgPaths.p296d9880} fill="white" id="search_icon" />
                         </svg>
@@ -183,24 +183,24 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
                     </div>
                   </div>
                 </div>
-                <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Identify Jetson AGX Orin edge hardware limits and define real-time latency target for drone flight operators</p>
+                <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[1.4] text-[14px] sm:text-[15px] lg:text-[16px] text-center text-white tracking-[0.64px] w-full px-2">Identify Jetson AGX Orin edge hardware limits and define real-time latency target for drone flight operators</p>
               </div>
             </div>
           </div>
 
           {/* IDEATE */}
           <div 
-            className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(14,165,233,0.4)] h-[320px] w-full max-w-[280px] transition-all duration-500 cursor-pointer ${isRevealed(1) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
+            className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(14,165,233,0.4)] h-full min-h-[300px] lg:h-[320px] w-full max-w-[320px] lg:max-w-[280px] flex flex-col overflow-hidden transition-all duration-500 cursor-pointer ${isRevealed(1) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
             onClick={() => handleReveal(1)}
           >
-            <div className="bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full">
-              <div className="content-stretch flex flex-col gap-[16px] h-[280px] items-center relative w-full pt-4">
+            <div className="bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] flex flex-col flex-1 items-center justify-between overflow-hidden rounded-[14px] w-full h-full p-4 sm:p-5">
+              <div className="flex flex-col gap-4 items-center justify-between relative w-full h-full my-auto">
                 <div className="relative w-full">
                   <div className="flex flex-row items-center justify-center size-full">
                     <div className="content-stretch flex items-center justify-center p-[10px] relative size-full gap-2">
-                      <p className="font-['JetBrains_Mono',sans-serif] font-normal h-[40px] leading-[normal] relative text-[36px] text-center text-white tracking-[1.44px]">IDEATE</p>
-                      <div className="content-stretch flex items-end justify-center relative size-[36px]">
-                        <div className="h-[30px] relative w-[20px]">
+                      <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[28px] sm:text-[36px] text-center text-white tracking-[1.44px]">IDEATE</p>
+                      <div className="content-stretch flex items-end justify-center relative size-[30px] sm:size-[36px]">
+                        <div className="h-[25px] sm:h-[30px] relative w-[18px] sm:w-[20px]">
                           <div className="absolute inset-[-5.13%_-7.69%]">
                             <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 30 43">
                               <path d={svgPaths.p19e7dac0} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" />
@@ -211,23 +211,23 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
                     </div>
                   </div>
                 </div>
-                <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Architect 3-tier decoupled pipeline (React, Django, FastAPI) and GPU acceleration strategy</p>
+                <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[1.4] text-[14px] sm:text-[15px] lg:text-[16px] text-center text-white tracking-[0.64px] w-full px-2">Architect 3-tier decoupled pipeline (React, Django, FastAPI) and GPU acceleration strategy</p>
               </div>
             </div>
           </div>
 
           {/* DESIGN */}
           <div 
-            className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(14,165,233,0.4)] h-[320px] w-full max-w-[280px] transition-all duration-500 cursor-pointer ${isRevealed(2) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
+            className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white shadow-[0px_0px_30px_2px_rgba(14,165,233,0.4)] h-full min-h-[300px] lg:h-[320px] w-full max-w-[320px] lg:max-w-[280px] flex flex-col overflow-hidden transition-all duration-500 cursor-pointer ${isRevealed(2) ? 'scale-105 opacity-100 z-30' : 'scale-95 opacity-50 z-10 blur-[1px]'}`}
             onClick={() => handleReveal(2)}
           >
-            <div className="bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full">
-              <div className="content-stretch flex flex-col gap-[16px] h-[280px] items-center relative w-full pt-4">
+            <div className="bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] flex flex-col flex-1 items-center justify-between overflow-hidden rounded-[14px] w-full h-full p-4 sm:p-5">
+              <div className="flex flex-col gap-4 items-center justify-between relative w-full h-full my-auto">
                 <div className="relative w-full">
                   <div className="flex flex-row items-center justify-center size-full">
                     <div className="content-stretch flex items-center justify-center p-[10px] relative size-full gap-2">
-                      <p className="font-['JetBrains_Mono',sans-serif] font-normal h-[40px] leading-[normal] relative text-[36px] text-center text-white tracking-[1.44px]">DESIGN</p>
-                      <div className="h-[40px] relative w-[38px] mb-2">
+                      <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[28px] sm:text-[36px] text-center text-white tracking-[1.44px]">DESIGN</p>
+                      <div className="h-[32px] sm:h-[40px] relative w-[30px] sm:w-[38px] mb-2">
                         <div className="absolute inset-[18.39%_16.67%_16.67%_16.67%]">
                           <div className="absolute inset-[-5.92%_-6%]">
                             <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 37.3333 37.7698">
@@ -239,7 +239,7 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
                     </div>
                   </div>
                 </div>
-                <p className="font-['JetBrains_Mono',sans-serif] font-normal h-auto leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Design operator interface for live video feed, VLM text prompts, spatial bounding boxes, and sensor data</p>
+                <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[1.4] text-[14px] sm:text-[15px] lg:text-[16px] text-center text-white tracking-[0.64px] w-full px-2">Design UI/UX for live drone stream overlays, bounding boxes, and system performance metrics</p>
               </div>
             </div>
           </div>
@@ -248,8 +248,8 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
         {/* SUMMARY QUOTE */}
         <div className="bg-transparent relative w-full">
           <div className="flex flex-row items-center overflow-clip w-full max-w-[1200px] mx-auto">
-            <div className="content-stretch flex items-center justify-center px-[40px] py-[10px] relative w-full">
-              <p className="font-['IBM_Plex_Mono',sans-serif] leading-[normal] not-italic relative shrink-0 text-[22px] text-white tracking-[0.96px] max-w-[850px] text-center">
+            <div className="content-stretch flex items-center justify-center px-4 sm:px-8 py-[10px] relative w-full">
+              <p className="font-['IBM_Plex_Mono',sans-serif] leading-[normal] not-italic relative text-[14px] sm:text-[18px] lg:text-[22px] text-white tracking-[0.96px] w-full max-w-[850px] text-center">
                 Over the course of this project, we successfully transformed a raw, incompatible AI model into a fully integrated, high-performance visual processing engine for the drone platform—laying the technical foundation for real-time autonomous task execution.
               </p>
             </div>
@@ -282,11 +282,11 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
           <div className="content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[20px] items-center justify-center relative w-full px-4">
             {/* CONVERT / ARM COMPILATION */}
             <div 
-              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(0) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(14,165,233,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
+              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-full min-h-[300px] lg:h-[320px] w-full max-w-[320px] lg:max-w-[280px] flex flex-col overflow-hidden transition-all duration-500 ease-in-out cursor-pointer ${isDevRevealed(0) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(14,165,233,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(0)}
             >
-              <div className="content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)]">
-                <div className="content-stretch flex flex-col gap-[20px] items-center relative w-full pt-6">
+              <div className={`flex flex-col flex-1 items-center justify-between overflow-hidden rounded-[14px] w-full h-full p-4 sm:p-5 transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] ${isDevRevealed(0) ? 'blur-none brightness-100' : 'blur-[2px] brightness-50'}`}>
+                <div className="flex flex-col gap-4 items-center justify-between relative w-full h-full my-auto">
                   <div className="relative w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[5px] relative size-full gap-2">
@@ -303,7 +303,7 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
                       </div>
                     </div>
                   </div>
-                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Custom compiled ARM-specific C++ dependencies and configured JetPack for Jetson edge hardware</p>
+                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[1.4] text-[14px] sm:text-[15px] lg:text-[16px] text-center text-white tracking-[0.64px] w-full px-2">Custom compiled ARM-specific C++ dependencies and configured JetPack for Jetson edge hardware</p>
                 </div>
               </div>
             </div>
@@ -318,11 +318,11 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
 
             {/* 3-TIER ARCHITECTURE */}
             <div 
-              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(1) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(14,165,233,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
+              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-full min-h-[300px] lg:h-[320px] w-full max-w-[320px] lg:max-w-[280px] flex flex-col overflow-hidden transition-all duration-500 ease-in-out cursor-pointer ${isDevRevealed(1) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(14,165,233,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(1)}
             >
-              <div className="content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)]">
-                <div className="content-stretch flex flex-col gap-[20px] items-center relative w-full pt-6">
+              <div className={`flex flex-col flex-1 items-center justify-between overflow-hidden rounded-[14px] w-full h-full p-4 sm:p-5 transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] ${isDevRevealed(1) ? 'blur-none brightness-100' : 'blur-[2px] brightness-50'}`}>
+                <div className="flex flex-col gap-4 items-center justify-between relative w-full h-full my-auto">
                   <div className="relative w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[5px] relative size-full gap-2">
@@ -339,7 +339,7 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
                       </div>
                     </div>
                   </div>
-                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Architected decoupled web pipeline using React, Django, and FastAPI to isolate heavy AI workloads</p>
+                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[1.4] text-[14px] sm:text-[15px] lg:text-[16px] text-center text-white tracking-[0.64px] w-full px-2">Architected decoupled web pipeline using React, Django, and FastAPI to isolate heavy AI workloads</p>
                 </div>
               </div>
             </div>
@@ -349,11 +349,11 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
           <div className="content-stretch flex flex-col lg:flex-row gap-8 lg:gap-[20px] items-center justify-center relative w-full px-4">
             {/* LATENCY OPTIMIZATION */}
             <div 
-              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(2) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(14,165,233,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
+              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-full min-h-[300px] lg:h-[320px] w-full max-w-[320px] lg:max-w-[280px] flex flex-col overflow-hidden transition-all duration-500 ease-in-out cursor-pointer ${isDevRevealed(2) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(14,165,233,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(2)}
             >
-              <div className="content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)]">
-                <div className="content-stretch flex flex-col gap-[20px] items-center relative w-full pt-6">
+              <div className={`flex flex-col flex-1 items-center justify-between overflow-hidden rounded-[14px] w-full h-full p-4 sm:p-5 transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] ${isDevRevealed(2) ? 'blur-none brightness-100' : 'blur-[2px] brightness-50'}`}>
+                <div className="flex flex-col gap-4 items-center justify-between relative w-full h-full my-auto">
                   <div className="relative w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[5px] relative size-full gap-2">
@@ -373,7 +373,7 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
                       </div>
                     </div>
                   </div>
-                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Engineered forced KV-caching, dynamic downscaling, and Ampere GPU flags for 88% latency drop</p>
+                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[1.4] text-[14px] sm:text-[15px] lg:text-[16px] text-center text-white tracking-[0.64px] w-full px-2">Engineered forced KV-caching, dynamic downscaling, and Ampere GPU flags for 88% latency drop</p>
                 </div>
               </div>
             </div>
@@ -388,11 +388,11 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
 
             {/* SPATIAL REGEX */}
             <div 
-              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-[320px] w-full max-w-[280px] cursor-pointer transition-all duration-500 ease-in-out ${isDevRevealed(3) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(14,165,233,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
+              className={`relative p-[1px] rounded-[15px] bg-gradient-to-b from-[#534e4e] to-white h-full min-h-[300px] lg:h-[320px] w-full max-w-[320px] lg:max-w-[280px] flex flex-col overflow-hidden transition-all duration-500 ease-in-out cursor-pointer ${isDevRevealed(3) ? 'scale-105 shadow-[0px_0px_30px_2px_rgba(14,165,233,0.4)] z-10' : 'scale-95 shadow-none z-0'}`}
               onClick={() => handleDevReveal(3)}
             >
-              <div className="content-stretch flex flex-col items-start overflow-clip rounded-[15px] size-full transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)]">
-                <div className="content-stretch flex flex-col gap-[20px] items-center relative w-full pt-6">
+              <div className={`flex flex-col flex-1 items-center justify-between overflow-hidden rounded-[14px] w-full h-full p-4 sm:p-5 transition-all duration-500 bg-gradient-to-b from-[#161616] via-[63%] via-[#4c4848] to-[rgba(152,150,150,0.8)] ${isDevRevealed(3) ? 'blur-none brightness-100' : 'blur-[2px] brightness-50'}`}>
+                <div className="flex flex-col gap-4 items-center justify-between relative w-full h-full my-auto">
                   <div className="relative w-full">
                     <div className="flex flex-row items-center justify-center size-full">
                       <div className="content-stretch flex items-center justify-center p-[5px] relative size-full gap-2">
@@ -409,7 +409,7 @@ export function VlmDrone({ onBack }: { onBack: () => void }) {
                       </div>
                     </div>
                   </div>
-                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative text-[16px] text-center text-white tracking-[0.64px] w-[240px]">Designed prompt engineering and backend Regex parsing to render spatial bounding boxes on UI feeds</p>
+                  <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[1.4] text-[14px] sm:text-[15px] lg:text-[16px] text-center text-white tracking-[0.64px] w-full px-2">Designed prompt engineering and backend Regex parsing to render spatial bounding boxes on UI feeds</p>
                 </div>
               </div>
             </div>

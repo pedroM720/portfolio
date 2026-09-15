@@ -4,6 +4,9 @@ import { ProjectPage } from '../App';
 import svgPaths from "../../imports/svg-vh8gv959zq";
 import ouroborosIcon from "../../assets/b81b4a2f1d6dd33617eaa8d69e28710e079f0b7b.png";
 
+import homeSvgPaths from "../../imports/svg-5wecq5nikp";
+import backSvgPaths from "../../imports/svg-6x7i7gg00i";
+
 interface Project {
   id: number;
   name: string;
@@ -188,10 +191,6 @@ function ProjectCard({ project, position, onProjectClick, onPrev, onNext }: Proj
         <p className="font-['Exo_2',sans-serif] text-[24px] md:text-[36px] text-white leading-[1.2] text-center max-w-[290px] md:max-w-[340px]">
           {project.description}
         </p>
-
-        <span className="md:hidden mt-2 font-['JetBrains_Mono',sans-serif] text-xs text-white/80 bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm border border-white/30">
-          Tap to view project ↗
-        </span>
       </div>
     </button>
   );
@@ -266,20 +265,34 @@ export function Projects({ onProjectClick }: { onProjectClick: (projectKey: Proj
         <div className="flex md:hidden items-center justify-center gap-6 mt-4 z-20">
           <button
             onClick={handlePrevious}
-            className="w-12 h-12 rounded-full border border-white/30 bg-black/60 text-white flex items-center justify-center text-xl font-bold backdrop-blur-md active:scale-95 shadow-lg"
+            className="bg-transparent border-none cursor-pointer p-1 transition-transform duration-300 hover:scale-110 active:scale-95 flex items-center justify-center"
             aria-label="Previous Project"
           >
-            ←
+            <svg className="w-[32px] h-[28px]" fill="none" preserveAspectRatio="none" viewBox="0 0 123.495 108.729">
+              <mask fill="white" id="path-back-mobile-prev">
+                <path d={backSvgPaths.p356c2e00} />
+              </mask>
+              <path d={backSvgPaths.p356c2e00} fill="white" />
+              <path d={backSvgPaths.p1092a080} fill="white" mask="url(#path-back-mobile-prev)" />
+            </svg>
           </button>
-          <span className="font-['JetBrains_Mono',sans-serif] text-sm text-white/70">
+          <span className="font-['Exo_2',sans-serif] text-sm text-white/90 tracking-wider font-semibold">
             {currentIndex + 1} / {projects.length}
           </span>
           <button
             onClick={handleNext}
-            className="w-12 h-12 rounded-full border border-white/30 bg-black/60 text-white flex items-center justify-center text-xl font-bold backdrop-blur-md active:scale-95 shadow-lg"
+            className="bg-transparent border-none cursor-pointer p-1 transition-transform duration-300 hover:scale-110 active:scale-95 flex items-center justify-center"
             aria-label="Next Project"
           >
-            →
+            <div className="rotate-180">
+              <svg className="w-[32px] h-[28px]" fill="none" preserveAspectRatio="none" viewBox="0 0 123.495 108.729">
+                <mask fill="white" id="path-back-mobile-next">
+                  <path d={backSvgPaths.p356c2e00} />
+                </mask>
+                <path d={backSvgPaths.p356c2e00} fill="white" />
+                <path d={backSvgPaths.p1092a080} fill="white" mask="url(#path-back-mobile-next)" />
+              </svg>
+            </div>
           </button>
         </div>
       </div>

@@ -21,16 +21,16 @@ export function BiodiversityGlobe({ onBack }: { onBack: () => void }) {
   return (
     <div className="bg-black w-full min-h-screen relative overflow-y-auto">
       {/* --- BACK ARROW --- */}
-      <div className="fixed left-4 top-4 lg:top-1/2 lg:-translate-y-1/2 z-50">
+      <div className="fixed left-4 top-[65px] lg:top-1/2 lg:-translate-y-1/2 z-50">
         <button
           onClick={onBack}
           onMouseEnter={() => setIsBackHovered(true)}
           onMouseLeave={() => setIsBackHovered(false)}
-          className="transition-transform duration-300 bg-black/80 lg:bg-transparent border border-white/20 lg:border-none rounded-full p-2 lg:p-0 backdrop-blur-md cursor-pointer flex items-center justify-center shadow-lg"
+          className="transition-transform duration-300 bg-transparent border-none cursor-pointer p-0"
           style={{ transform: isBackHovered ? 'scale(1.1)' : 'scale(1)' }}
           aria-label="Back to projects"
         >
-          <svg className="w-[36px] h-[30px] lg:w-[62px] lg:h-[54px]" fill="none" preserveAspectRatio="none" viewBox="0 0 123.495 108.729">
+          <svg className="w-[42px] h-[36px] sm:w-[50px] sm:h-[44px] lg:w-[62px] lg:h-[54px]" fill="none" preserveAspectRatio="none" viewBox="0 0 123.495 108.729">
             <mask fill="white" id="path-back">
               <path d={backSvgPaths.p356c2e00} />
             </mask>
@@ -44,7 +44,7 @@ export function BiodiversityGlobe({ onBack }: { onBack: () => void }) {
       <div className="content-stretch flex flex-col items-start justify-center overflow-clip relative w-full max-w-[1200px] mx-auto min-h-0 lg:min-h-[752px] pt-16 lg:pt-0">
 
         <div className="flex flex-col lg:flex-row items-center justify-between w-full relative z-10">
-          <div className="content-stretch flex flex-col gap-[16px] h-auto lg:h-[752px] items-start pt-4 lg:pt-[139px] ml-0 mt-0 relative shrink-0 w-full lg:w-[479px] px-6 lg:pl-[40px] lg:pr-0">
+          <div className="content-stretch flex flex-col gap-[16px] h-auto lg:min-h-[752px] items-start pt-4 lg:pt-[139px] ml-0 mt-0 relative shrink-0 w-full lg:w-[479px] px-6 lg:pl-[40px] lg:pr-0">
             <div className="content-stretch flex h-auto lg:h-[110px] items-start overflow-clip pr-0 lg:pr-[23px] relative shrink-0 w-auto">
               <p className="font-['IBM_Plex_Mono',sans-serif] leading-[normal] not-italic relative shrink-0 text-[72px] sm:text-[100px] lg:text-[156px] text-white -mt-[10px]">03</p>
             </div>
@@ -52,12 +52,9 @@ export function BiodiversityGlobe({ onBack }: { onBack: () => void }) {
             {/* Top Divider Line (Desktop) */}
             <div className="hidden lg:block w-[378px] h-[1px] bg-white my-1" />
 
-            <div className="content-stretch flex flex-col gap-[10px] min-h-0 lg:h-[328px] items-start overflow-visible pb-[17px] pr-0 lg:pr-[23px] relative shrink-0 w-full lg:w-[479px]">
+            <div className="content-stretch flex flex-col gap-[10px] min-h-0 lg:min-h-[328px] items-start overflow-visible pb-[17px] pr-0 lg:pr-[23px] relative shrink-0 w-full lg:w-[479px]">
               <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative shrink-0 text-[28px] sm:text-[40px] text-white w-full lg:w-[380px]">BIODIVERSITY GLOBE</p>
               <p className="font-['JetBrains_Mono',sans-serif] font-normal leading-[normal] relative shrink-0 text-[16px] sm:text-[20px] text-white/90 w-full lg:w-[380px]">An interactive exploration of human evolutionary adaptation through planetary data and biological narratives.</p>
-
-              {/* Bottom Divider Line (Desktop) - keeps icons cleanly UNDER the white bar */}
-              <div className="hidden lg:block w-[415px] h-[1px] bg-white my-2" />
 
               {/* Stack Icons & Live Link Button */}
               <div className="content-stretch flex items-center gap-[14px] h-[71px] relative shrink-0 w-full mt-2 flex-wrap">
@@ -72,11 +69,14 @@ export function BiodiversityGlobe({ onBack }: { onBack: () => void }) {
                   href="https://pedro-martinez-ib35-creative.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-black font-['JetBrains_Mono',sans-serif] font-bold px-4 py-2.5 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:shadow-[0_0_30px_rgba(34,211,238,0.7)] hover:scale-105 text-sm ml-0 sm:ml-2"
+                  className="inline-flex items-center gap-2 border-2 border-white bg-transparent hover:bg-white/10 text-white font-['Exo_2',sans-serif] font-bold px-4 py-2.5 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.6)] hover:scale-105 text-sm ml-0 sm:ml-2"
                 >
                   <span>EXPLORE THE BIOSPHERE ↗</span>
                 </a>
               </div>
+
+              {/* Bottom Divider Line (Desktop) - containing title, description, and icons between top and bottom white bars */}
+              <div className="hidden lg:block w-[415px] h-[1px] bg-white mt-3 mb-1" />
             </div>
           </div>
 
